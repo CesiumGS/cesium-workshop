@@ -1,17 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cesium Workshop App</title>
-    <script src="ThirdParty/Cesium/Cesium.js"></script>
-    <style>
-        @import url(ThirdParty/Cesium/Widgets/widgets.css);
-        html, body, #cesiumContainer {
-            width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
-        }
-    </style>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8">
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>New York City</title>
+    <link rel="stylesheet" href="index.css" media="screen">
 </head>
 <body>
 <div id="cesiumContainer"></div>
+<div class="backdrop" id="menu">
+    <h2>Sample NYC Geocaches</h2>
+    <span><strong>Camera Mode</strong></span>
+    <div class="nowrap">
+        <input id="freeMode" name="source" type="radio" checked/>
+        <label for="freeMode">Free</label>
+    </div>
+    <div class="nowrap">
+        <input id="droneMode" name="source" type="radio"/>
+        <label for="droneMode">Drone View</label>
+    </div>
+    <br>
+
+    <span><strong>3d Tile Styling</strong></span>
+    <div class="nowrap">
+        <select id="tileStyle">
+            <option value="none">None</option>
+            <option value="height">Height</option>
+            <option value="area">Area</option>
+        </select>
+    </div>
+    <br>
+
+    <span><strong>Display Options</strong></span>
+    <div class="nowrap">
+        <input id="shadows" type="checkbox"/>
+        <label for="shadows">Shadows</label>
+    </div>
+
+    <div class="nowrap">
+        <input id="neighborhoods" type="checkbox"/>
+        <label for="neighborhoods">Neighborhoods</label>
+    </div>
+
+    <span> Cache max display distance (meters)</span>
+    <div class="nowrap">
+        <input id="distanceSlider" type="range" min="1000" max="100000" value="10000" step="1000">
+        <input id="distanceField" type="number" min="1000" max="100000" value="10000"/>
+    </div>
+</div>
+<div id="loadingIndicator">
+    <div id="loadingIcon" class="loadingIndicator"></div>
+</div>
+
+<script src="ThirdParty/Cesium/Cesium.js"></script>
 <script src="Source/App.js"></script>
 </body>
 </html>
