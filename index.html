@@ -9,10 +9,16 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <title>New York City</title>
+    <!-- The Cesium library. -->
+    <script src="ThirdParty/Cesium/Cesium.js"></script>
+    <style>@import url(ThirdParty/Cesium/Widgets/widgets.css);</style>
     <link rel="stylesheet" href="index.css" media="screen">
 </head>
 <body>
+<!-- A container for the Cesium Viewer to live in. -->
 <div id="cesiumContainer"></div>
+
+<!-- Some input elements for our application. -->
 <div class="backdrop" id="menu">
     <h2>Sample NYC Geocaches</h2>
     <span><strong>Camera Mode</strong></span>
@@ -25,17 +31,15 @@
         <label for="droneMode">Drone View</label>
     </div>
     <br>
-
     <span><strong>3d Tile Styling</strong></span>
     <div class="nowrap">
         <select id="tileStyle">
             <option value="none">None</option>
             <option value="height">Height</option>
-            <option value="area">Area</option>
+            <option value="transparent">Transparent</option>
         </select>
     </div>
     <br>
-
     <span><strong>Display Options</strong></span>
     <div class="nowrap">
         <input id="shadows" type="checkbox"/>
@@ -46,18 +50,19 @@
         <input id="neighborhoods" type="checkbox"/>
         <label for="neighborhoods">Neighborhoods</label>
     </div>
-
     <span> Cache max display distance (meters)</span>
     <div class="nowrap">
         <input id="distanceSlider" type="range" min="1000" max="100000" value="10000" step="1000">
         <input id="distanceField" type="number" min="1000" max="100000" value="10000"/>
     </div>
+    <br>
 </div>
-<div id="loadingIndicator">
+<div id="loadingIndicator" class="cover">
     <div id="loadingIcon" class="loadingIndicator"></div>
 </div>
 
-<script src="ThirdParty/Cesium/Cesium.js"></script>
+<!-- Our application code. -->
 <script src="Source/App.js"></script>
+
 </body>
 </html>

@@ -3,8 +3,10 @@
     //////////////////////////////////////////////////////////////////////////
 
     var viewer = new Cesium.Viewer('cesiumContainer', {
+        navigationHelpButton: false,
+        scene3DOnly: true,
         selectionIndicator: false,
-        navigationHelpButton: false
+        baseLayerPicker: false
     });
 
     // Set the initial camera view
@@ -37,12 +39,27 @@
     //Set up clock and timeline.
     viewer.clock.shouldAnimate = true;
     viewer.clock.clockStep = Cesium.ClockStep.TICK_DEPENDENT;
-    viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP;
-    viewer.clock.multiplier = 60;
+    viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP; // loop at the end
+    viewer.clock.multiplier = 60; // sets a speedup
     viewer.clock.startTime = Cesium.JulianDate.fromIso8601("2016-08-01T04:00:00Z");
     viewer.clock.stopTime = Cesium.JulianDate.fromIso8601("2016-08-02T04:00:00Z");
     viewer.clock.currentTime = Cesium.JulianDate.fromIso8601("2016-08-01T16:00:00Z");
-    viewer.timeline.zoomTo(viewer.clock.startTime, viewer.clock.stopTime);
+    viewer.timeline.zoomTo(viewer.clock.startTime, viewer.clock.stopTime); // set visible range
+
+    //Enable lighting based on sun/moon positions
+    viewer.scene.globe.enableLighting = true;
+
+    //////////////////////////////////////////////////////////////////////////
+    // Loading Imagery
+    //////////////////////////////////////////////////////////////////////////
+
+    Cesium.BingMapsApi.defaultKey = 'AsarFiDvISunWhi137V7l5Bu80baB73npU98oTyjqKOb7NbrkiuBPZfDxgXTrGtQ'; // For use on cesiumjs.org only
+
+    // Add Bing imagery
+    viewer.imageryLayers.addImageryProvider(new Cesium.BingMapsImageryProvider({
+        url : 'https://dev.virtualearth.net',
+        mapStyle: Cesium.BingMapsStyle.AERIAL // Can also use Cesium.BingMapsStyle.ROADS
+    }));
 
     //////////////////////////////////////////////////////////////////////////
     // Loading Terrain
@@ -51,93 +68,31 @@
     //Load STK World Terrain
     viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
         url : 'https://assets.agi.com/stk-terrain/world',
-        requestWaterMask : true,
+        requestWaterMask : true, // required for water effects
         requestVertexNormals : true // required for terrain lighting
     });
-    //Enable lighting based on sun/moon positions
-    viewer.scene.globe.enableLighting = true;
     //Enable depth testing so things behind the terrain disappear.
     viewer.scene.globe.depthTestAgainstTerrain = true;
-
 
     //////////////////////////////////////////////////////////////////////////
     // Loading Data
     //////////////////////////////////////////////////////////////////////////
 
-    var options = {
+    var geojsonOptions = {
+        markerSize : 40,
+        markerSymbol : '!',
+        clampToGround : true
+    };
+    // Load points of interest from a GeoJson
+    var pointsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/pointsOfInterest.geojson', geojsonOptions);
+
+
+    var kmlOptions = {
         camera : viewer.scene.camera,
         canvas : viewer.scene.canvas
     };
-
     // Load neighborhood boundaries from KML file
-    var neighborhoodsPromise = Cesium.KmlDataSource.load('./Source/SampleData/neighborhoods.kml', options);
-
-    // Load points of interest from a GeoJson
-    var pointsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/pointsOfInterest.geojson', options);
-
-    //Generate a random circular pattern with varying heights.
-    var start = viewer.clock.startTime;
-    function computeCircularFlight(lon, lat, radius) {
-        var lonRadians = Cesium.Math.toRadians(lon);
-        var latRadians = Cesium.Math.toRadians(lat);
-        var property = new Cesium.SampledPositionProperty();
-        for (var i = 0; i <= 360; i += 45) {
-            var offset = Cesium.Math.toRadians(i);
-            var time = Cesium.JulianDate.addSeconds(start, i * 240, new Cesium.JulianDate());
-            var position = Cesium.Cartesian3.fromRadians(lonRadians + (radius * 1.5 * Math.cos(offset)), latRadians + (radius * Math.sin(offset)), 500);
-            property.addSample(time, position);
-            //Also create a point for each sample we generate.
-            viewer.entities.add({
-                position : position,
-                point : {
-                    pixelSize : 8,
-                    color : Cesium.Color.YELLOW
-                }
-            });
-        }
-        return property;
-    }
-
-    // Load drone 3D model
-    // Set a starting position in an interesting environment.
-    var position = Cesium.Cartesian3.fromDegrees(-74.01881302800247, 40.72694833660694, 700);
-    var heading = Cesium.Math.toRadians(135);
-    var pitch = 0;
-    var roll = 0;
-    var hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-    var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
-
-    position = computeCircularFlight(-73.95881302800247, 40.78694833660694, 0.0005)
-    var drone = viewer.entities.add({
-        //Set the entity availability to the same interval as the simulation time.
-        availability : new Cesium.TimeIntervalCollection([new Cesium.TimeInterval({
-            start : viewer.clock.startTime,
-            stop : viewer.clock.stopTime
-        })]),
-        name : 'drone',
-        position : position,
-        orientation : new Cesium.VelocityOrientationProperty(position),
-        model : {
-            uri : './Source/SampleData/Models/CesiumDrone.gltf',
-            minimumPixelSize : 128,
-            maximumScale : 2000
-        },
-        //Show the path as a line sampled in 100 second increments.
-        path : {
-            resolution : 100,
-            material : new Cesium.PolylineGlowMaterialProperty({
-                glowPower : 0.1,
-                color : Cesium.Color.YELLOW
-            }),
-            width : 10
-        }
-    });
-
-    // Interpolate smoothly between position sample points.
-    drone.position.setInterpolationOptions({
-        interpolationDegree : 2,
-        interpolationAlgorithm : Cesium.HermitePolynomialApproximation
-    });
+    var neighborhoodsPromise = Cesium.KmlDataSource.load('./Source/SampleData/neighborhoods.kml', kmlOptions);
 
     //////////////////////////////////////////////////////////////////////////
     // Styling Data
@@ -159,8 +114,10 @@
             if (Cesium.defined(entity.polygon)) {
                 //Set the polygon material to a random, translucent color.
                 entity.polygon.material = Cesium.Color.fromRandom({
-                    red : 0.0,
-                    alpha : 0.5
+                    red : 0.1,
+                    maximumGreen : 0.5,
+                    minimumBlue : 0.5,
+                    alpha : 0.6
                 });
                 // Make the polygon conform to terrain.
                 entity.polygon.height = undefined;
@@ -176,7 +133,7 @@
                     text : entity.kml.extendedData.ntaname.value,
                     showBackground : true,
                     scale : 0.6,
-                    horizontalOrigin : Cesium.HorizontalOrigin.LEFT,
+                    horizontalOrigin : Cesium.HorizontalOrigin.CENTER,
                     verticalOrigin : Cesium.VerticalOrigin.BOTTOM,
                     distanceDisplayCondition : distanceDisplayCondition,
                     disableDepthTestDistance : Number.POSITIVE_INFINITY
@@ -259,16 +216,22 @@
         show : true
     });
 
+    var transparentStyle = new Cesium.Cesium3DTileStyle({
+        color : "color('white', 0.3)",
+        show : true
+    });
+
     var heightStyle = new Cesium.Cesium3DTileStyle({
         color : {
             conditions : [
-                ["${height} >= 300", "color('#2b0f89')"],
-                ["${height} >= 200", "color('#654fad')"],
-                ["${height} >= 100", "color('#ac9ddb')"],
-                ["${height} >= 50", "color('#eae8f2')"],
-                ["${height} >= 25", "color('#e8d4b4')"],
-                ["${height} >= 10", "color('#efd777')"],
-                ["true", "color('#edbc42')"]
+                ["${height} >= 300", "rgba(45, 0, 75, 0.5)"],
+                ["${height} >= 200", "rgb(102, 71, 151)"],
+                ["${height} >= 100", "rgb(170, 162, 204)"],
+                ["${height} >= 50", "rgb(224, 226, 238)"],
+                ["${height} >= 25", "rgb(252, 230, 200)"],
+                ["${height} >= 10", "rgb(248, 176, 87)"],
+                ["${height} >= 5", "rgb(198, 106, 11)"],
+                ["true", "rgb(127, 59, 8)"]
             ]
         }
     });
@@ -284,10 +247,82 @@
             city.style = defaultStyle;
         } else if (selectedStyle === 'height') {
             city.style = heightStyle;
+        } else if (selectedStyle === 'transparent') {
+            city.style = transparentStyle;
         }
     }
 
     tileStyle.addEventListener('change', set3DTileStyle);
+
+    //////////////////////////////////////////////////////////////////////////
+    // 3D Models and time-dynamic properties
+    //////////////////////////////////////////////////////////////////////////
+
+
+    // Generate a random circular pattern with varying heights.
+    // This will be replaced with CZML file once it's made.
+    var start = viewer.clock.startTime;
+    function computeCircularFlight(lon, lat, radius) {
+        var lonRadians = Cesium.Math.toRadians(lon);
+        var latRadians = Cesium.Math.toRadians(lat);
+        var property = new Cesium.SampledPositionProperty();
+        for (var i = 0; i <= 360; i += 45) {
+            var offset = Cesium.Math.toRadians(i);
+            var time = Cesium.JulianDate.addSeconds(start, i * 240, new Cesium.JulianDate());
+            var position = Cesium.Cartesian3.fromRadians(lonRadians + (radius * 1.5 * Math.cos(offset)), latRadians + (radius * Math.sin(offset)), 500);
+            property.addSample(time, position);
+            //Also create a point for each sample we generate.
+            viewer.entities.add({
+                position : position,
+                point : {
+                    pixelSize : 8,
+                    color : Cesium.Color.YELLOW
+                }
+            });
+        }
+        return property;
+    }
+
+    // Load drone 3D model
+    // Set a starting position in an interesting environment.
+    var position = Cesium.Cartesian3.fromDegrees(-74.01881302800247, 40.72694833660694, 700);
+    var heading = Cesium.Math.toRadians(135);
+    var pitch = 0;
+    var roll = 0;
+    var hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+    var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
+
+    position = computeCircularFlight(-73.95881302800247, 40.78694833660694, 0.0005)
+    var drone = viewer.entities.add({
+        //Set the entity availability to the same interval as the simulation time.
+        availability : new Cesium.TimeIntervalCollection([new Cesium.TimeInterval({
+            start : viewer.clock.startTime,
+            stop : viewer.clock.stopTime
+        })]),
+        name : 'drone',
+        position : position,
+        orientation : new Cesium.VelocityOrientationProperty(position),
+        model : {
+            uri : './Source/SampleData/Models/CesiumDrone.gltf',
+            minimumPixelSize : 128,
+            maximumScale : 2000
+        },
+        //Show the path as a line sampled in 100 second increments.
+        path : {
+            resolution : 100,
+            material : new Cesium.PolylineGlowMaterialProperty({
+                glowPower : 0.1,
+                color : Cesium.Color.YELLOW
+            }),
+            width : 10
+        }
+    });
+
+    // Interpolate smoothly between position sample points.
+    drone.position.setInterpolationOptions({
+        interpolationDegree : 2,
+        interpolationAlgorithm : Cesium.HermitePolynomialApproximation
+    });
 
     //////////////////////////////////////////////////////////////////////////
     // Custom mouse interaction for highlighting and selecting
@@ -307,7 +342,7 @@
         // Highlight the currently picked entity
         if (Cesium.defined(pickedEntity) && Cesium.defined(pickedEntity.billboard)) {
             pickedEntity.billboard.scale = 2.0;
-            pickedEntity.billboard.color = Cesium.Color.PURPLE;
+            pickedEntity.billboard.color = Cesium.Color.ORANGERED;
             previousPickedEntity = pickedEntity;
         }
     }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
@@ -354,6 +389,8 @@
 
     neighborhoodsElement.addEventListener('change', function (e) {
         neighborhoods.show = e.target.checked;
+        tileStyle.value = 'transparent';
+        city.style = transparentStyle;
     });
 
     // Update the distance display conditions whenever the slider or text input field change.
