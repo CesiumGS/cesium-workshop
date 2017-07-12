@@ -3,7 +3,6 @@
     //////////////////////////////////////////////////////////////////////////
 
     var viewer = new Cesium.Viewer('cesiumContainer', {
-        navigationHelpButton: false,
         scene3DOnly: true,
         selectionIndicator: false,
         baseLayerPicker: false
@@ -12,38 +11,32 @@
     // Set the initial camera view
     var initialPosition = Cesium.Cartesian3.fromDegrees(-74.01881302800248, 40.69114333714821, 753);
     var initialOrientation = new Cesium.HeadingPitchRoll.fromDegrees(21.27879878293835, -21.34390550872461, 0.0716951918898415);
-    viewer.scene.camera.setView({
-        destination: initialPosition,
-        orientation: {
-            heading: initialOrientation.heading,
-            pitch: initialOrientation.pitch,
-            roll: initialOrientation.roll
+    var homeCameraView = {
+        destination : initialPosition,
+        orientation : {
+            heading : initialOrientation.heading,
+            pitch : initialOrientation.pitch,
+            roll : initialOrientation.roll
         }
-    });
+    };
+    viewer.scene.camera.setView(homeCameraView);
 
-    //Override the default home button
+    // Override the default home button
+    homeCameraView.endTransformation = Cesium.Matrix4.IDENTITY;
+    homeCameraView.duration = 2.0;
     viewer.homeButton.viewModel.command.beforeExecute.addEventListener(function (arg) {
         arg.cancel = true;
-        viewer.scene.camera.flyTo({
-            destination: initialPosition,
-            orientation: {
-                heading: initialOrientation.heading,
-                pitch: initialOrientation.pitch,
-                roll: initialOrientation.roll
-            },
-            endTransform: Cesium.Matrix4.IDENTITY,
-            duration: 1.0
-        });
+        viewer.scene.camera.flyTo(homeCameraView);
     });
 
     //Set up clock and timeline.
-    viewer.clock.shouldAnimate = true;
-    viewer.clock.clockStep = Cesium.ClockStep.TICK_DEPENDENT;
+    viewer.clock.shouldAnimate = true; // default
+    viewer.clock.startTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
+    viewer.clock.stopTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:20:00Z");
+    viewer.clock.currentTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
+    viewer.clock.multiplier = 10; // sets a speedup
+    viewer.clock.clockStep = Cesium.ClockStep.SYSTEM_CLOCK_MULTIPLIER; // tick computation mode
     viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP; // loop at the end
-    viewer.clock.multiplier = 60; // sets a speedup
-    viewer.clock.startTime = Cesium.JulianDate.fromIso8601("2016-08-01T04:00:00Z");
-    viewer.clock.stopTime = Cesium.JulianDate.fromIso8601("2016-08-02T04:00:00Z");
-    viewer.clock.currentTime = Cesium.JulianDate.fromIso8601("2016-08-01T16:00:00Z");
     viewer.timeline.zoomTo(viewer.clock.startTime, viewer.clock.stopTime); // set visible range
 
     //Enable lighting based on sun/moon positions
@@ -78,27 +71,27 @@
     // Loading Data
     //////////////////////////////////////////////////////////////////////////
 
-    var geojsonOptions = {
-        markerSize : 40,
-        markerSymbol : '!',
+    var kmlOptions = {
+        camera : viewer.scene.camera,
+        canvas : viewer.scene.canvas,
         clampToGround : true
     };
     // Load points of interest from a GeoJson
-    var pointsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/pointsOfInterest.geojson', geojsonOptions);
+    var pointsPromise = Cesium.KmlDataSource.load('./Source/SampleData/sampleGeocacheLocations.kml', kmlOptions);
 
-
-    var kmlOptions = {
-        camera : viewer.scene.camera,
-        canvas : viewer.scene.canvas
+    var geojsonOptions = {
+        clampToGround : true
     };
     // Load neighborhood boundaries from KML file
-    var neighborhoodsPromise = Cesium.KmlDataSource.load('./Source/SampleData/neighborhoods.kml', kmlOptions);
+    var neighborhoodsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/neighborhoods.geojson', geojsonOptions);
+
+    // Load neighborhood boundaries from KML file
+    var dronePromise = Cesium.CzmlDataSource.load('./Source/SampleData/SampleFlight.czml');
 
     //////////////////////////////////////////////////////////////////////////
     // Styling Data
     //////////////////////////////////////////////////////////////////////////
 
-    var distanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 10000.0);
     var neighborhoods = viewer.entities.add(new Cesium.Entity());
     neighborhoodsPromise.then(function(dataSource) {
         // Add the new data as entities to the viewer
@@ -106,43 +99,42 @@
 
         // Get the array of entities
         var entities = dataSource.entities.values;
-
         for (var i = 0; i < entities.length; i++) {
             var entity = entities[i];
-            var name = entity.id;
 
             if (Cesium.defined(entity.polygon)) {
-                //Set the polygon material to a random, translucent color.
+                // Use kml neighborhood value as entity name
+                entity.name = entity.properties.neighborhood;
+                // Set the polygon material to a random, translucent color.
                 entity.polygon.material = Cesium.Color.fromRandom({
                     red : 0.1,
                     maximumGreen : 0.5,
                     minimumBlue : 0.5,
                     alpha : 0.6
                 });
-                // Make the polygon conform to terrain.
-                entity.polygon.height = undefined;
-                entity.polygon.heightReference = Cesium.HeightReference.CLAMP_TO_GROUND;
                 // Add to the neighborhoods group
                 entity.parent = neighborhoods;
                 // Generate Polygon center
-                var poly_center = Cesium.BoundingSphere.fromPoints(entity.polygon.hierarchy.getValue().positions).center;
-                poly_center = Cesium.Ellipsoid.WGS84.scaleToGeodeticSurface(poly_center);
-                entity.position = poly_center;
+                var polyPositions = entity.polygon.hierarchy.getValue(Cesium.JulianDate.now()).positions;
+                var polyCenter = Cesium.BoundingSphere.fromPoints(polyPositions).center;
+                polyCenter = Cesium.Ellipsoid.WGS84.scaleToGeodeticSurface(polyCenter);
+                entity.position = polyCenter;
                 // Generate labels
-                entity.label = new Cesium.LabelGraphics({
-                    text : entity.kml.extendedData.ntaname.value,
+                entity.label = {
+                    text : entity.name,
                     showBackground : true,
                     scale : 0.6,
                     horizontalOrigin : Cesium.HorizontalOrigin.CENTER,
                     verticalOrigin : Cesium.VerticalOrigin.BOTTOM,
-                    distanceDisplayCondition : distanceDisplayCondition,
+                    distanceDisplayCondition : new Cesium.DistanceDisplayCondition(10.0, 8000.0),
                     disableDepthTestDistance : Number.POSITIVE_INFINITY
-                });
+                };
             }
         }
         neighborhoods.show = false;
     });
 
+    var pointsDistanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 20000.0);
     var points = viewer.entities.add(new Cesium.Entity());
     pointsPromise.then(function(dataSource) {
         // Add the new data as entities to the viewer
@@ -156,9 +148,12 @@
             if (Cesium.defined(entity.billboard)) {
                 // Add to the points group
                 entity.parent = points;
-
                 // Add distance display condition
-                entity.billboard.distanceDisplayCondition = distanceDisplayCondition;
+                entity.billboard.distanceDisplayCondition = pointsDistanceDisplayCondition;
+                // Adjust the vertical origin so pins sit on terrain.
+                entity.billboard.verticalOrigin = Cesium.VerticalOrigin.BOTTOM;
+                // Disable the labels to reduce clutter
+                entity.label = undefined;
 
                 // modify description
                 var cartographicPosition = Cesium.Cartographic.fromCartesian(entity.position.getValue(Cesium.JulianDate.now()));
@@ -173,7 +168,20 @@
                 entity.description = description;
             }
         }
+    });
 
+    var drone;
+    dronePromise.then(function(dataSource) {
+        viewer.dataSources.add(dataSource);
+        drone = dataSource.entities.values[0];
+        // Attach a 3D model
+        drone.model = {
+            uri : './Source/SampleData/Models/CesiumDrone.gltf',
+            minimumPixelSize : 128,
+            maximumScale : 2000
+        };
+        // Add computed orientation based on sampled positions
+        drone.orientation = new Cesium.VelocityOrientationProperty(drone.position);
     });
 
     //////////////////////////////////////////////////////////////////////////
@@ -255,76 +263,6 @@
     tileStyle.addEventListener('change', set3DTileStyle);
 
     //////////////////////////////////////////////////////////////////////////
-    // 3D Models and time-dynamic properties
-    //////////////////////////////////////////////////////////////////////////
-
-
-    // Generate a random circular pattern with varying heights.
-    // This will be replaced with CZML file once it's made.
-    var start = viewer.clock.startTime;
-    function computeCircularFlight(lon, lat, radius) {
-        var lonRadians = Cesium.Math.toRadians(lon);
-        var latRadians = Cesium.Math.toRadians(lat);
-        var property = new Cesium.SampledPositionProperty();
-        for (var i = 0; i <= 360; i += 45) {
-            var offset = Cesium.Math.toRadians(i);
-            var time = Cesium.JulianDate.addSeconds(start, i * 240, new Cesium.JulianDate());
-            var position = Cesium.Cartesian3.fromRadians(lonRadians + (radius * 1.5 * Math.cos(offset)), latRadians + (radius * Math.sin(offset)), 500);
-            property.addSample(time, position);
-            //Also create a point for each sample we generate.
-            viewer.entities.add({
-                position : position,
-                point : {
-                    pixelSize : 8,
-                    color : Cesium.Color.YELLOW
-                }
-            });
-        }
-        return property;
-    }
-
-    // Load drone 3D model
-    // Set a starting position in an interesting environment.
-    var position = Cesium.Cartesian3.fromDegrees(-74.01881302800247, 40.72694833660694, 700);
-    var heading = Cesium.Math.toRadians(135);
-    var pitch = 0;
-    var roll = 0;
-    var hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-    var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
-
-    position = computeCircularFlight(-73.95881302800247, 40.78694833660694, 0.0005)
-    var drone = viewer.entities.add({
-        //Set the entity availability to the same interval as the simulation time.
-        availability : new Cesium.TimeIntervalCollection([new Cesium.TimeInterval({
-            start : viewer.clock.startTime,
-            stop : viewer.clock.stopTime
-        })]),
-        name : 'drone',
-        position : position,
-        orientation : new Cesium.VelocityOrientationProperty(position),
-        model : {
-            uri : './Source/SampleData/Models/CesiumDrone.gltf',
-            minimumPixelSize : 128,
-            maximumScale : 2000
-        },
-        //Show the path as a line sampled in 100 second increments.
-        path : {
-            resolution : 100,
-            material : new Cesium.PolylineGlowMaterialProperty({
-                glowPower : 0.1,
-                color : Cesium.Color.YELLOW
-            }),
-            width : 10
-        }
-    });
-
-    // Interpolate smoothly between position sample points.
-    drone.position.setInterpolationOptions({
-        interpolationDegree : 2,
-        interpolationAlgorithm : Cesium.HermitePolynomialApproximation
-    });
-
-    //////////////////////////////////////////////////////////////////////////
     // Custom mouse interaction for highlighting and selecting
     //////////////////////////////////////////////////////////////////////////
 
@@ -368,6 +306,7 @@
             viewer.scene.preRender.addEventListener(followDrone);
         } else {
             viewer.scene.preRender.removeEventListener(followDrone);
+            camera.flyTo(homeCameraView);
         }
     }
 
@@ -395,23 +334,24 @@
 
     // Update the distance display conditions whenever the slider or text input field change.
     function setDistanceDisplayCondition(farDistance) {
-        distanceDisplayCondition.far = farDistance;
+        pointsDistanceDisplayCondition.far = farDistance;
         for (i=0; i < points._children.length; ++i) {
             var entity = points._children[i];
-            entity.billboard.distanceDisplayCondition = distanceDisplayCondition;
+            entity.billboard.distanceDisplayCondition = pointsDistanceDisplayCondition;
         }
     }
-    distanceSliderElement.addEventListener('change', function (e) {
+    distanceSliderElement.addEventListener('input', function (e) {
         distanceFieldElement.value = e.target.value;
         setDistanceDisplayCondition(e.target.value)
     });
-    distanceFieldElement.addEventListener('change', function (e) {
+    distanceFieldElement.addEventListener('input', function (e) {
         distancesliderElement.value = e.target.value;
         setDistanceDisplayCondition(e.target.value)
     });
 
     // Finally, wait for the initial city to be ready before removing the loading indicator.
     var loadingIndicator = document.getElementById('loadingIndicator');
+    loadingIndicator.style.display = 'block';
     city.readyPromise.then(function () {
         loadingIndicator.style.display = 'none';
     });
