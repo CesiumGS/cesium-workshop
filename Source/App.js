@@ -9,8 +9,8 @@
     });
 
     // Set the initial camera view
-    var initialPosition = Cesium.Cartesian3.fromDegrees(-74.01881302800248, 40.69114333714821, 753);
-    var initialOrientation = new Cesium.HeadingPitchRoll.fromDegrees(21.27879878293835, -21.34390550872461, 0.0716951918898415);
+    var initialPosition = new Cesium.Cartesian3.fromRadians(-1.2915107377360926, 0.7099041716721665, 2631.082799425431);
+    var initialOrientation = new Cesium.HeadingPitchRoll(0.12405363360746424, -0.5582823615169765, 0.0004517479565659954);
     var homeCameraView = {
         destination : initialPosition,
         orientation : {
@@ -85,12 +85,44 @@
     // Load neighborhood boundaries from KML file
     var neighborhoodsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/neighborhoods.geojson', geojsonOptions);
 
-    // Load neighborhood boundaries from KML file
+    // Load a drone flight path from a CZML file
     var dronePromise = Cesium.CzmlDataSource.load('./Source/SampleData/SampleFlight.czml');
 
     //////////////////////////////////////////////////////////////////////////
     // Styling Data
     //////////////////////////////////////////////////////////////////////////
+
+    var pointsDistanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 20000.0);
+    var pointEntities;
+    pointsPromise.then(function(dataSource) {
+        // Add the new data as entities to the viewer
+        viewer.dataSources.add(dataSource);
+
+        // Get the array of entities
+        pointEntities = dataSource.entities.values;
+
+        for (var i = 0; i < pointEntities.length; i++) {
+            var entity = pointEntities[i];
+            if (Cesium.defined(entity.billboard)) {
+                // Adjust the vertical origin so pins sit on terrain.
+                entity.billboard.verticalOrigin = Cesium.VerticalOrigin.BOTTOM;
+                // Disable the labels to reduce clutter
+                entity.label = undefined;
+                // Add distance display condition
+                entity.billboard.distanceDisplayCondition = pointsDistanceDisplayCondition;
+                // modify description
+                var cartographicPosition = Cesium.Cartographic.fromCartesian(entity.position.getValue(Cesium.JulianDate.now()));
+                var latitude = Cesium.Math.toDegrees(cartographicPosition.latitude);
+                var longitude = Cesium.Math.toDegrees(cartographicPosition.longitude);
+
+                var description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>';
+                description += '<tr><th>' + "Latitude" + '</th><td>' + latitude + '</td></tr>';
+                description += '<tr><th>' + "Longitude" + '</th><td>' + longitude + '</td></tr>';
+                description += '</tbody></table>';
+                entity.description = description;
+            }
+        }
+    });
 
     var neighborhoods = viewer.entities.add(new Cesium.Entity());
     neighborhoodsPromise.then(function(dataSource) {
@@ -112,8 +144,6 @@
                     minimumBlue : 0.5,
                     alpha : 0.6
                 });
-                // Add to the neighborhoods group
-                entity.parent = neighborhoods;
                 // Generate Polygon center
                 var polyPositions = entity.polygon.hierarchy.getValue(Cesium.JulianDate.now()).positions;
                 var polyCenter = Cesium.BoundingSphere.fromPoints(polyPositions).center;
@@ -129,45 +159,11 @@
                     distanceDisplayCondition : new Cesium.DistanceDisplayCondition(10.0, 8000.0),
                     disableDepthTestDistance : Number.POSITIVE_INFINITY
                 };
+                // Add to the neighborhoods group
+                entity.parent = neighborhoods;
             }
         }
         neighborhoods.show = false;
-    });
-
-    var pointsDistanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 20000.0);
-    var points = viewer.entities.add(new Cesium.Entity());
-    pointsPromise.then(function(dataSource) {
-        // Add the new data as entities to the viewer
-        viewer.dataSources.add(dataSource);
-
-        // Get the array of entities
-        var entities = dataSource.entities.values;
-
-        for (var i = 0; i < entities.length; i++) {
-            var entity = entities[i];
-            if (Cesium.defined(entity.billboard)) {
-                // Add to the points group
-                entity.parent = points;
-                // Add distance display condition
-                entity.billboard.distanceDisplayCondition = pointsDistanceDisplayCondition;
-                // Adjust the vertical origin so pins sit on terrain.
-                entity.billboard.verticalOrigin = Cesium.VerticalOrigin.BOTTOM;
-                // Disable the labels to reduce clutter
-                entity.label = undefined;
-
-                // modify description
-                var cartographicPosition = Cesium.Cartographic.fromCartesian(entity.position.getValue(Cesium.JulianDate.now()));
-                var latitude = Cesium.Math.toDegrees(cartographicPosition.latitude);
-                var longitude = Cesium.Math.toDegrees(cartographicPosition.longitude);
-
-                var description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>';
-                description += '<tr><th>' + "Latitude" + '</th><td>' + latitude + '</td></tr>';
-                description += '<tr><th>' + "Longitude" + '</th><td>' + longitude + '</td></tr>';
-                description += '</tbody></table>';
-
-                entity.description = description;
-            }
-        }
     });
 
     var drone;
@@ -193,15 +189,6 @@
         url: 'https://cesiumjs.org/NewYork/3DTilesGml',
         maximumScreenSpaceError: 16 // default value
     }));
-
-    // Current licensing attribution for the current tileset
-    var currentCredits = [];
-    currentCredits.push(new Cesium.Credit('Building data © OpenStreetMap contributors'));
-    currentCredits.push(new Cesium.Credit('Download this 3D Tiles tileset', undefined, 'https://cesiumjs.org/NewYork/3DTiles/NewYork.zip'));
-    // Add the attributes to the credits list.
-    currentCredits.forEach(function (credit) {
-        viewer.scene.frameState.creditDisplay.addDefaultCredit(credit);
-    });
 
     // Adjust the tileset height so its not floating above terrain
     var heightOffset = -32;
@@ -335,9 +322,11 @@
     // Update the distance display conditions whenever the slider or text input field change.
     function setDistanceDisplayCondition(farDistance) {
         pointsDistanceDisplayCondition.far = farDistance;
-        for (i=0; i < points._children.length; ++i) {
-            var entity = points._children[i];
-            entity.billboard.distanceDisplayCondition = pointsDistanceDisplayCondition;
+        for (i=0; i < pointEntities.length; ++i) {
+            var entity = pointEntities[i];
+            if (Cesium.defined(entity.billboard)) {
+                entity.billboard.distanceDisplayCondition = pointsDistanceDisplayCondition;
+            }
         }
     }
     distanceSliderElement.addEventListener('input', function (e) {
@@ -345,7 +334,7 @@
         setDistanceDisplayCondition(e.target.value)
     });
     distanceFieldElement.addEventListener('input', function (e) {
-        distancesliderElement.value = e.target.value;
+        distanceSliderElement.value = e.target.value;
         setDistanceDisplayCondition(e.target.value)
     });
 
