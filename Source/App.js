@@ -22,10 +22,9 @@
     viewer.scene.camera.setView(homeCameraView);
 
     // Override the default home button
-    homeCameraView.endTransformation = Cesium.Matrix4.IDENTITY;
-    homeCameraView.duration = 2.0;
-    viewer.homeButton.viewModel.command.beforeExecute.addEventListener(function (arg) {
-        arg.cancel = true;
+    viewer.homeButton.viewModel.command.beforeExecute.addEventListener(function (e) {
+        e.cancel = true;
+        homeCameraView.duration = 2.0;
         viewer.scene.camera.flyTo(homeCameraView);
     });
 
@@ -46,12 +45,12 @@
     // Loading Imagery
     //////////////////////////////////////////////////////////////////////////
 
-    Cesium.BingMapsApi.defaultKey = 'AsarFiDvISunWhi137V7l5Bu80baB73npU98oTyjqKOb7NbrkiuBPZfDxgXTrGtQ'; // For use on cesiumjs.org only
+    Cesium.BingMapsApi.defaultKey = 'AihaXS6TtE_olKOVdtkMenAMq1L5nDlnU69mRtNisz1vZavr1HhdqGRNkB2Bcqvs'; // For use on cesiumjs.org only
 
     // Add Bing imagery
     viewer.imageryLayers.addImageryProvider(new Cesium.BingMapsImageryProvider({
         url : 'https://dev.virtualearth.net',
-        mapStyle: Cesium.BingMapsStyle.AERIAL // Can also use Cesium.BingMapsStyle.ROADS
+        mapStyle: Cesium.BingMapsStyle.ROADS // Can also use Cesium.BingMapsStyle.ROADS
     }));
 
     //////////////////////////////////////////////////////////////////////////
@@ -62,13 +61,13 @@
     viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
         url : 'https://assets.agi.com/stk-terrain/world',
         requestWaterMask : true, // required for water effects
-        requestVertexNormals : true // required for terrain lighting
+        requestVertexNormals : false // required for terrain lighting
     });
-    //Enable depth testing so things behind the terrain disappear.
+    // Enable depth testing so things behind the terrain disappear.
     viewer.scene.globe.depthTestAgainstTerrain = true;
 
     //////////////////////////////////////////////////////////////////////////
-    // Loading Data
+    // Loading and Styling Data
     //////////////////////////////////////////////////////////////////////////
 
     var kmlOptions = {
@@ -76,45 +75,31 @@
         canvas : viewer.scene.canvas,
         clampToGround : true
     };
-    // Load points of interest from a GeoJson
-    var pointsPromise = Cesium.KmlDataSource.load('./Source/SampleData/sampleGeocacheLocations.kml', kmlOptions);
+    // Load geocache points of interest from a KML file
+    var geocachePromise = Cesium.KmlDataSource.load('./Source/SampleData/sampleGeocacheLocations.kml', kmlOptions);
 
-    var geojsonOptions = {
-        clampToGround : true
-    };
-    // Load neighborhood boundaries from KML file
-    var neighborhoodsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/neighborhoods.geojson', geojsonOptions);
-
-    // Load a drone flight path from a CZML file
-    var dronePromise = Cesium.CzmlDataSource.load('./Source/SampleData/SampleFlight.czml');
-
-    //////////////////////////////////////////////////////////////////////////
-    // Styling Data
-    //////////////////////////////////////////////////////////////////////////
-
-    var pointsDistanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 20000.0);
-    var pointEntities;
-    pointsPromise.then(function(dataSource) {
+    // Add geocache billboard entities to scene and style them
+    geocachePromise.then(function(dataSource) {
         // Add the new data as entities to the viewer
         viewer.dataSources.add(dataSource);
 
         // Get the array of entities
-        pointEntities = dataSource.entities.values;
+        var geocacheEntities = dataSource.entities.values;
 
-        for (var i = 0; i < pointEntities.length; i++) {
-            var entity = pointEntities[i];
+        for (var i = 0; i < geocacheEntities.length; i++) {
+            var entity = geocacheEntities[i];
             if (Cesium.defined(entity.billboard)) {
                 // Adjust the vertical origin so pins sit on terrain.
                 entity.billboard.verticalOrigin = Cesium.VerticalOrigin.BOTTOM;
                 // Disable the labels to reduce clutter
                 entity.label = undefined;
                 // Add distance display condition
-                entity.billboard.distanceDisplayCondition = pointsDistanceDisplayCondition;
-                // modify description
+                entity.billboard.distanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 20000.0);
+                // Compute latitude and longitude in degrees
                 var cartographicPosition = Cesium.Cartographic.fromCartesian(entity.position.getValue(Cesium.JulianDate.now()));
                 var latitude = Cesium.Math.toDegrees(cartographicPosition.latitude);
                 var longitude = Cesium.Math.toDegrees(cartographicPosition.longitude);
-
+                // Modify description
                 var description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>';
                 description += '<tr><th>' + "Latitude" + '</th><td>' + latitude + '</td></tr>';
                 description += '<tr><th>' + "Longitude" + '</th><td>' + longitude + '</td></tr>';
@@ -124,6 +109,13 @@
         }
     });
 
+    var geojsonOptions = {
+        clampToGround : true
+    };
+    // Load neighborhood boundaries from a GeoJson file
+    var neighborhoodsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/neighborhoods.geojson', geojsonOptions);
+
+    //
     var neighborhoods = viewer.entities.add(new Cesium.Entity());
     neighborhoodsPromise.then(function(dataSource) {
         // Add the new data as entities to the viewer
@@ -163,8 +155,11 @@
                 entity.parent = neighborhoods;
             }
         }
-        neighborhoods.show = false;
+        neighborhoods.show = true;
     });
+
+    // Load a drone flight path from a CZML file
+    var dronePromise = Cesium.CzmlDataSource.load('./Source/SampleData/SampleFlight.czml');
 
     var drone;
     dronePromise.then(function(dataSource) {
@@ -178,6 +173,12 @@
         };
         // Add computed orientation based on sampled positions
         drone.orientation = new Cesium.VelocityOrientationProperty(drone.position);
+
+        // Smooth path interpolation
+        drone.position.setInterpolationOptions({
+            interpolationAlgorithm : Cesium.HermitePolynomialApproximation,
+            interpolationDegree : 2
+        });
     });
 
     //////////////////////////////////////////////////////////////////////////
@@ -196,9 +197,9 @@
         // Position tileset
         var boundingSphere = tileset.boundingSphere;
         var cartographic = Cesium.Cartographic.fromCartesian(boundingSphere.center);
-        var surface = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, 0.0);
-        var offset = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, heightOffset);
-        var translation = Cesium.Cartesian3.subtract(offset, surface, new Cesium.Cartesian3());
+        var surfacePosition = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, 0.0);
+        var offsetPosition = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, heightOffset);
+        var translation = Cesium.Cartesian3.subtract(offsetPosition, surfacePosition, new Cesium.Cartesian3());
         tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation);
     });
 
@@ -209,6 +210,10 @@
     var defaultStyle = new Cesium.Cesium3DTileStyle({
         color : "color('white')",
         show : true
+    });
+
+    city.readyPromise.then(function(tileset) {
+        tileset.style = defaultStyle;
     });
 
     var transparentStyle = new Cesium.Cesium3DTileStyle({
@@ -231,10 +236,6 @@
         }
     });
 
-    city.readyPromise.then(function(tileset) {
-        tileset.style = defaultStyle;
-    });
-
     var tileStyle = document.getElementById('tileStyle');
     function set3DTileStyle() {
         var selectedStyle = tileStyle.options[tileStyle.selectedIndex].value;
@@ -246,17 +247,17 @@
             city.style = transparentStyle;
         }
     }
-
     tileStyle.addEventListener('change', set3DTileStyle);
 
     //////////////////////////////////////////////////////////////////////////
     // Custom mouse interaction for highlighting and selecting
     //////////////////////////////////////////////////////////////////////////
 
-    // If the mouse is over a point of interest, change the entity billboard scale and color
+    // // If the mouse is over a point of interest, change the entity billboard scale and color
     var previousPickedEntity = undefined;
+
     var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
-    handler.setInputAction(function(movement) {
+    handler.setInputAction(function (movement) {
         var pickedPrimitive = viewer.scene.pick(movement.endPosition);
         var pickedEntity = (Cesium.defined(pickedPrimitive)) ? pickedPrimitive.id : undefined;
         // Unhighlight the previously picked entity
@@ -271,7 +272,6 @@
             previousPickedEntity = pickedEntity;
         }
     }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
-
 
     //////////////////////////////////////////////////////////////////////////
     // Setup Camera Modes
@@ -306,8 +306,6 @@
 
     var shadowsElement = document.getElementById('shadows');
     var neighborhoodsElement =  document.getElementById('neighborhoods');
-    var distanceSliderElement = document.getElementById('distanceSlider');
-    var distanceFieldElement = document.getElementById('distanceField');
 
     shadowsElement.addEventListener('change', function (e) {
         viewer.shadows = e.target.checked;
@@ -317,25 +315,6 @@
         neighborhoods.show = e.target.checked;
         tileStyle.value = 'transparent';
         city.style = transparentStyle;
-    });
-
-    // Update the distance display conditions whenever the slider or text input field change.
-    function setDistanceDisplayCondition(farDistance) {
-        pointsDistanceDisplayCondition.far = farDistance;
-        for (i=0; i < pointEntities.length; ++i) {
-            var entity = pointEntities[i];
-            if (Cesium.defined(entity.billboard)) {
-                entity.billboard.distanceDisplayCondition = pointsDistanceDisplayCondition;
-            }
-        }
-    }
-    distanceSliderElement.addEventListener('input', function (e) {
-        distanceFieldElement.value = e.target.value;
-        setDistanceDisplayCondition(e.target.value)
-    });
-    distanceFieldElement.addEventListener('input', function (e) {
-        distanceSliderElement.value = e.target.value;
-        setDistanceDisplayCondition(e.target.value)
     });
 
     // Finally, wait for the initial city to be ready before removing the loading indicator.
