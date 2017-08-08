@@ -1,3 +1,6 @@
+(function () {
+    "use strict";
+
     //////////////////////////////////////////////////////////////////////////
     // Viewer configuration
     //////////////////////////////////////////////////////////////////////////
@@ -22,9 +25,12 @@
     viewer.scene.camera.setView(homeCameraView);
 
     // Override the default home button
+    homeCameraView.duration = 2.0;
+    homeCameraView.maximumHeight = 2000;
+    homeCameraView.pitchAdjustHeight = 2000;
+    homeCameraView.endTransform = Cesium.Matrix4.IDENTITY;
     viewer.homeButton.viewModel.command.beforeExecute.addEventListener(function (e) {
         e.cancel = true;
-        homeCameraView.duration = 2.0;
         viewer.scene.camera.flyTo(homeCameraView);
     });
 
@@ -33,7 +39,7 @@
     viewer.clock.startTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
     viewer.clock.stopTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:20:00Z");
     viewer.clock.currentTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
-    viewer.clock.multiplier = 10; // sets a speedup
+    viewer.clock.multiplier = 2; // sets a speedup
     viewer.clock.clockStep = Cesium.ClockStep.SYSTEM_CLOCK_MULTIPLIER; // tick computation mode
     viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP; // loop at the end
     viewer.timeline.zoomTo(viewer.clock.startTime, viewer.clock.stopTime); // set visible range
@@ -179,6 +185,7 @@
             interpolationAlgorithm : Cesium.HermitePolynomialApproximation,
             interpolationDegree : 2
         });
+        drone.viewFrom = new Cesium.Cartesian3(30, 0, 0);
     });
 
     //////////////////////////////////////////////////////////////////////////
@@ -254,8 +261,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // // If the mouse is over a point of interest, change the entity billboard scale and color
-    var previousPickedEntity = undefined;
-
+    var previousPickedEntity;
     var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
     handler.setInputAction(function (movement) {
         var pickedPrimitive = viewer.scene.pick(movement.endPosition);
@@ -280,25 +286,25 @@
     var freeModeElement = document.getElementById('freeMode');
     var droneModeElement = document.getElementById('droneMode');
 
-    // Create a follow camera by using drone transformation to update camera
-    var scratch = new Cesium.Matrix4();
-    var camera =  viewer.scene.camera;
-    function followDrone() {
-        drone._getModelMatrix(viewer.clock.currentTime, scratch);
-        camera.lookAtTransform(scratch, new Cesium.Cartesian3(-20, 0, 5));
-    }
-
-    function setCameraMode() {
+    // Create a follow camera by tracking the drone entity
+    function setViewMode() {
         if(droneModeElement.checked) {
-            viewer.scene.preRender.addEventListener(followDrone);
+            viewer.trackedEntity = drone;
         } else {
-            viewer.scene.preRender.removeEventListener(followDrone);
-            camera.flyTo(homeCameraView);
+            viewer.trackedEntity = undefined;
+            viewer.scene.camera.flyTo(homeCameraView);
         }
     }
 
-    freeModeElement.addEventListener('change', setCameraMode);
-    droneModeElement.addEventListener('change', setCameraMode);
+    freeModeElement.addEventListener('change', setViewMode);
+    droneModeElement.addEventListener('change', setViewMode);
+
+    viewer.trackedEntityChanged.addEventListener(function() {
+       if (viewer.trackedEntity === drone) {
+           freeModeElement.checked = false;
+           droneModeElement.checked = true;
+       }
+    });
 
     //////////////////////////////////////////////////////////////////////////
     // Setup Display Options
@@ -323,3 +329,5 @@
     city.readyPromise.then(function () {
         loadingIndicator.style.display = 'none';
     });
+
+}());
