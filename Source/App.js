@@ -1,8 +1,10 @@
 (function () {
     "use strict";
 
+    Cesium.BingMapsApi.defaultKey = 'AihaXS6TtE_olKOVdtkMenAMq1L5nDlnU69mRtNisz1vZavr1HhdqGRNkB2Bcqvs'; // For use with this application only
+
     //////////////////////////////////////////////////////////////////////////
-    // Viewer configuration
+    // Creating the Viewer
     //////////////////////////////////////////////////////////////////////////
 
     var viewer = new Cesium.Viewer('cesiumContainer', {
@@ -11,47 +13,9 @@
         baseLayerPicker: false
     });
 
-    // Set the initial camera view
-    var initialPosition = new Cesium.Cartesian3.fromRadians(-1.2915107377360926, 0.7099041716721665, 2631.082799425431);
-    var initialOrientation = new Cesium.HeadingPitchRoll(0.12405363360746424, -0.5582823615169765, 0.0004517479565659954);
-    var homeCameraView = {
-        destination : initialPosition,
-        orientation : {
-            heading : initialOrientation.heading,
-            pitch : initialOrientation.pitch,
-            roll : initialOrientation.roll
-        }
-    };
-    viewer.scene.camera.setView(homeCameraView);
-
-    // Override the default home button
-    homeCameraView.duration = 2.0;
-    homeCameraView.maximumHeight = 2000;
-    homeCameraView.pitchAdjustHeight = 2000;
-    homeCameraView.endTransform = Cesium.Matrix4.IDENTITY;
-    viewer.homeButton.viewModel.command.beforeExecute.addEventListener(function (e) {
-        e.cancel = true;
-        viewer.scene.camera.flyTo(homeCameraView);
-    });
-
-    //Set up clock and timeline.
-    viewer.clock.shouldAnimate = true; // default
-    viewer.clock.startTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
-    viewer.clock.stopTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:20:00Z");
-    viewer.clock.currentTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
-    viewer.clock.multiplier = 2; // sets a speedup
-    viewer.clock.clockStep = Cesium.ClockStep.SYSTEM_CLOCK_MULTIPLIER; // tick computation mode
-    viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP; // loop at the end
-    viewer.timeline.zoomTo(viewer.clock.startTime, viewer.clock.stopTime); // set visible range
-
-    //Enable lighting based on sun/moon positions
-    viewer.scene.globe.enableLighting = true;
-
     //////////////////////////////////////////////////////////////////////////
     // Loading Imagery
     //////////////////////////////////////////////////////////////////////////
-
-    Cesium.BingMapsApi.defaultKey = 'AihaXS6TtE_olKOVdtkMenAMq1L5nDlnU69mRtNisz1vZavr1HhdqGRNkB2Bcqvs'; // For use on cesiumjs.org only
 
     // Add Bing imagery
     viewer.imageryLayers.addImageryProvider(new Cesium.BingMapsImageryProvider({
@@ -63,7 +27,7 @@
     // Loading Terrain
     //////////////////////////////////////////////////////////////////////////
 
-    //Load STK World Terrain
+    // Load STK World Terrain
     viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
         url : 'https://assets.agi.com/stk-terrain/world',
         requestWaterMask : true, // required for water effects
@@ -73,7 +37,49 @@
     viewer.scene.globe.depthTestAgainstTerrain = true;
 
     //////////////////////////////////////////////////////////////////////////
-    // Loading and Styling Data
+    // Configuring the Scene
+    //////////////////////////////////////////////////////////////////////////
+
+    // Enable lighting based on sun/moon positions
+    viewer.scene.globe.enableLighting = true;
+
+    // Create an initial camera view
+    var initialPosition = new Cesium.Cartesian3.fromRadians(-1.2915107377360926, 0.7099041716721665, 2631.082799425431);
+    var initialOrientation = new Cesium.HeadingPitchRoll(0.12405363360746424, -0.5582823615169765, 0.0004517479565659954);
+    var homeCameraView = {
+        destination : initialPosition,
+        orientation : {
+            heading : initialOrientation.heading,
+            pitch : initialOrientation.pitch,
+            roll : initialOrientation.roll
+        }
+    };
+    // Set the initial view
+    viewer.scene.camera.setView(homeCameraView);
+
+    // Add some camera flight animation options
+    homeCameraView.duration = 2.0;
+    homeCameraView.maximumHeight = 2000;
+    homeCameraView.pitchAdjustHeight = 2000;
+    homeCameraView.endTransform = Cesium.Matrix4.IDENTITY;
+    // Override the default home button
+    viewer.homeButton.viewModel.command.beforeExecute.addEventListener(function (e) {
+        e.cancel = true;
+        viewer.scene.camera.flyTo(homeCameraView);
+    });
+
+    // Set up clock and timeline.
+    viewer.clock.shouldAnimate = true; // default
+    viewer.clock.startTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
+    viewer.clock.stopTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:20:00Z");
+    viewer.clock.currentTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
+    viewer.clock.multiplier = 2; // sets a speedup
+    viewer.clock.clockStep = Cesium.ClockStep.SYSTEM_CLOCK_MULTIPLIER; // tick computation mode
+    viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP; // loop at the end
+    viewer.timeline.zoomTo(viewer.clock.startTime, viewer.clock.stopTime); // set visible range
+
+    //////////////////////////////////////////////////////////////////////////
+    // Loading and Styling Entity Data
     //////////////////////////////////////////////////////////////////////////
 
     var kmlOptions = {
@@ -82,6 +88,7 @@
         clampToGround : true
     };
     // Load geocache points of interest from a KML file
+    // Data from : http://catalog.opendata.city/dataset/pediacities-nyc-neighborhoods/resource/91778048-3c58-449c-a3f9-365ed203e914
     var geocachePromise = Cesium.KmlDataSource.load('./Source/SampleData/sampleGeocacheLocations.kml', kmlOptions);
 
     // Add geocache billboard entities to scene and style them
@@ -95,7 +102,7 @@
         for (var i = 0; i < geocacheEntities.length; i++) {
             var entity = geocacheEntities[i];
             if (Cesium.defined(entity.billboard)) {
-                // Adjust the vertical origin so pins sit on terrain.
+                // Adjust the vertical origin so pins sit on terrain
                 entity.billboard.verticalOrigin = Cesium.VerticalOrigin.BOTTOM;
                 // Disable the labels to reduce clutter
                 entity.label = undefined;
@@ -119,23 +126,25 @@
         clampToGround : true
     };
     // Load neighborhood boundaries from a GeoJson file
-    var neighborhoodsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/neighborhoods.geojson', geojsonOptions);
+    // Data from : https://data.cityofnewyork.us/City-Government/Neighborhood-Tabulation-Areas/cpf4-rkhq
+    var neighborhoodsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/sampleNeighborhoods.geojson', geojsonOptions);
 
-    //
-    var neighborhoods = viewer.entities.add(new Cesium.Entity());
+    // Save an new entity collection of neighborhood data
+    var neighborhoods;
     neighborhoodsPromise.then(function(dataSource) {
         // Add the new data as entities to the viewer
         viewer.dataSources.add(dataSource);
+        neighborhoods = dataSource.entities;
 
         // Get the array of entities
-        var entities = dataSource.entities.values;
-        for (var i = 0; i < entities.length; i++) {
-            var entity = entities[i];
+        var neighborhoodEntities = dataSource.entities.values;
+        for (var i = 0; i < neighborhoodEntities.length; i++) {
+            var entity = neighborhoodEntities[i];
 
             if (Cesium.defined(entity.polygon)) {
                 // Use kml neighborhood value as entity name
                 entity.name = entity.properties.neighborhood;
-                // Set the polygon material to a random, translucent color.
+                // Set the polygon material to a random, translucent color
                 entity.polygon.material = Cesium.Color.fromRandom({
                     red : 0.1,
                     maximumGreen : 0.5,
@@ -157,16 +166,14 @@
                     distanceDisplayCondition : new Cesium.DistanceDisplayCondition(10.0, 8000.0),
                     disableDepthTestDistance : Number.POSITIVE_INFINITY
                 };
-                // Add to the neighborhoods group
-                entity.parent = neighborhoods;
             }
         }
-        neighborhoods.show = true;
     });
 
     // Load a drone flight path from a CZML file
     var dronePromise = Cesium.CzmlDataSource.load('./Source/SampleData/SampleFlight.czml');
 
+    // Save a new drone model entity
     var drone;
     dronePromise.then(function(dataSource) {
         viewer.dataSources.add(dataSource);
@@ -189,7 +196,7 @@
     });
 
     //////////////////////////////////////////////////////////////////////////
-    // Import CityGML 3D Tileset
+    // Load 3D Tileset
     //////////////////////////////////////////////////////////////////////////
 
     // Load the NYC buildings tileset
@@ -198,7 +205,7 @@
         maximumScreenSpaceError: 16 // default value
     }));
 
-    // Adjust the tileset height so its not floating above terrain
+    // Adjust the tileset height so it's not floating above terrain
     var heightOffset = -32;
     city.readyPromise.then(function(tileset) {
         // Position tileset
@@ -260,9 +267,9 @@
     // Custom mouse interaction for highlighting and selecting
     //////////////////////////////////////////////////////////////////////////
 
-    // // If the mouse is over a point of interest, change the entity billboard scale and color
+    // If the mouse is over a point of interest, change the entity billboard scale and color
     var previousPickedEntity;
-    var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+    var handler = viewer.screenSpaceEventHandler;
     handler.setInputAction(function (movement) {
         var pickedPrimitive = viewer.scene.pick(movement.endPosition);
         var pickedEntity = (Cesium.defined(pickedPrimitive)) ? pickedPrimitive.id : undefined;

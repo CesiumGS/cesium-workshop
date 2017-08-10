@@ -6,7 +6,7 @@
     </a>
 </p>
 
-A simple JavaScript app showcasing some features of [Cesium](http://cesium.agi.com/), the open-source WebGL virtual globe and map engine.  Just fork this repo and start coding.
+A simple JavaScript app showcasing some features of [Cesium](http://cesiumjs.org/), the open-source WebGL virtual globe and map engine.
 
 **Cesium version**: [1.36](http://cesiumjs.org/downloads.html).
 
@@ -58,7 +58,7 @@ If your app only requires static file serving (i.e. no proxying etc) it can be h
 Cesium resources
 ----------------
 
-* [Forum](http://cesium.agi.com/forum.html)
-* [Tutorials](http://cesium.agi.com/tutorials.html)
-* [Sandcastle](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html) - lots of examples to copy and paste.
-* [Reference Documentation](http://cesium.agi.com/refdoc.html)
+* [Reference Documentation](http://cesiumjs.org/refdoc.html) : A complete guide to the Cesium API containing many code snippets.
+* [Sandcastle](http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html) : A live-coding environment with a large gallery of code examples.
+* [Tutorials](http://cesiumjs.org/tutorials.html) : Detailed introductions to areas of Cesium development.
+* [Cesium Forum](http://cesiumjs.org/forum.html) : A resource for asking and answering Cesium-related questions.
