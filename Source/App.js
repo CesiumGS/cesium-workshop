@@ -20,7 +20,7 @@
     // Add Bing imagery
     viewer.imageryLayers.addImageryProvider(new Cesium.BingMapsImageryProvider({
         url : 'https://dev.virtualearth.net',
-        mapStyle: Cesium.BingMapsStyle.ROADS // Can also use Cesium.BingMapsStyle.ROADS
+        mapStyle: Cesium.BingMapsStyle.AERIAL // Can also use Cesium.BingMapsStyle.ROAD
     }));
 
     //////////////////////////////////////////////////////////////////////////
@@ -44,8 +44,8 @@
     viewer.scene.globe.enableLighting = true;
 
     // Create an initial camera view
-    var initialPosition = new Cesium.Cartesian3.fromRadians(-1.2915107377360926, 0.7099041716721665, 2631.082799425431);
-    var initialOrientation = new Cesium.HeadingPitchRoll(0.12405363360746424, -0.5582823615169765, 0.0004517479565659954);
+    var initialPosition = new Cesium.Cartesian3.fromDegrees(-73.998114468289017509, 40.674512895646692812, 2631.082799425431);
+    var initialOrientation = new Cesium.HeadingPitchRoll.fromDegrees(7.1077496389876024807, -31.987223091598949054, 0.025883251314954971306);
     var homeCameraView = {
         destination : initialPosition,
         orientation : {
@@ -192,7 +192,7 @@
             interpolationAlgorithm : Cesium.HermitePolynomialApproximation,
             interpolationDegree : 2
         });
-        drone.viewFrom = new Cesium.Cartesian3(30, 0, 0);
+        drone.viewFrom = new Cesium.Cartesian3(-30, 0, 0);
     });
 
     //////////////////////////////////////////////////////////////////////////
@@ -201,7 +201,7 @@
 
     // Load the NYC buildings tileset
     var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-        url: 'https://cesiumjs.org/NewYork/3DTilesGml',
+        url: 'https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s',
         maximumScreenSpaceError: 16 // default value
     }));
 
@@ -221,20 +221,22 @@
     // Style 3D Tileset
     //////////////////////////////////////////////////////////////////////////
 
+    // Define a white, opaque building style
     var defaultStyle = new Cesium.Cesium3DTileStyle({
         color : "color('white')",
         show : true
     });
 
-    city.readyPromise.then(function(tileset) {
-        tileset.style = defaultStyle;
-    });
+    // Set the tileset style to default
+    city.style = defaultStyle;
 
+    // Define a white, transparent building style
     var transparentStyle = new Cesium.Cesium3DTileStyle({
         color : "color('white', 0.3)",
         show : true
     });
 
+   // Define a style in which buildings are colored by height
     var heightStyle = new Cesium.Cesium3DTileStyle({
         color : {
             conditions : [
@@ -272,7 +274,7 @@
     var handler = viewer.screenSpaceEventHandler;
     handler.setInputAction(function (movement) {
         var pickedPrimitive = viewer.scene.pick(movement.endPosition);
-        var pickedEntity = (Cesium.defined(pickedPrimitive)) ? pickedPrimitive.id : undefined;
+        var pickedEntity = Cesium.defined(pickedPrimitive) ? pickedPrimitive.id : undefined;
         // Unhighlight the previously picked entity
         if (Cesium.defined(previousPickedEntity)) {
             previousPickedEntity.billboard.scale = 1.0;
@@ -295,7 +297,7 @@
 
     // Create a follow camera by tracking the drone entity
     function setViewMode() {
-        if(droneModeElement.checked) {
+        if (droneModeElement.checked) {
             viewer.trackedEntity = drone;
         } else {
             viewer.trackedEntity = undefined;
