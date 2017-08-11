@@ -47,14 +47,6 @@ What's here?
 * [LICENSE](LICENSE) - A license file already referencing Cesium as a third-party.  This starter app is licensed with [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) (free for commercial and non-commercial use).  You can, of course, license your code however you want.
 * [.gitignore](.gitignore) - A small list of files not to include in the git repo.  Add to this as needed.
 
-Hosting your app on GitHub Pages
---------------------------------
-
-If your app only requires static file serving (i.e. no proxying etc) it can be hosted using [GitHub Pages](https://pages.github.com/).
-* Push your app to a gh-pages branch on github.  If you want to push from master you can use this command:
-`git push origin master:gh-pages`
-* After about 10 mins or so you can view your app with a URL like [http:/**my-github-username**.github.io/**my-awesome-cesium-app**/](http://my-github-username.github.io/my-awesome-cesium-app/)
-
 Cesium resources
 ----------------
 
