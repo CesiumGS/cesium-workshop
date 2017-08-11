@@ -1,0 +1,877 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns:kml="http://earth.google.com/kml/2.2">
+  <Document id="featureCollection">
+<Style id="defaultStyle">
+  <LineStyle>
+    <width>1.5</width>
+  </LineStyle>
+  <PolyStyle>
+    <color>7d8a30c4</color>
+  </PolyStyle>
+</Style>
+  <Folder><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Van Cortlandt Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cortlandt</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>1</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>90</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Van</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.88895811640342,40.8962098695574
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Woodlawn Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>2</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>95</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Woodlawn</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87165102682086,40.88987947152594
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Seton Falls Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Falls</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>3</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>81</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Seton</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.8386418872537,40.88696522165708
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Pelham Bay Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Bay</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>4</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>69</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Pelham</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.80980242290379,40.87798554992497
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Botanical Garden</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Garden</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>5</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>8</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Botanical</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87830775950145,40.864423947038276
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Bronx Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>6</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>9</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Bronx</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87626064361218,40.85552207412337
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Saint  Raymond's Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Raymond's</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Cemetery</value></Data><Data name="objectid"><value>7</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>78</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>St.</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.83530397142964,40.82330814715979
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Ferry Point Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Point</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>8</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>27</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Ferry</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.83284639755986,40.814343380069246
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Sound View Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>View</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>9</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>84</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Sound</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87217310381769,40.81544429769787
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Crotona Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>10</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>21</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Crotona</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.89422936815207,40.83847660461835
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Zoo/Wildlife Conser. Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Conser.</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>11</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>96</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Zoo/Wildlife</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87523756734706,40.84900594697981
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Hart Island</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Island</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>12</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>42</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Hart</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.76975723964243,40.851364969267536
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Saint Mary's Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Mary's</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>13</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>79</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>St.</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.91175819597106,40.81147587509648
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Inwood Hill Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Hill Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>14</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>45</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Inwood</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.92618082532951,40.872193334259926
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Fort Tryon Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Tryon</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>15</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>36</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Fort</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.93190269450912,40.862990772923396
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Rikers Island</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Island</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>16</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>74</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Rikers</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.88276247711234,40.791980533469754
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Marcus Garvey Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Garvey</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>17</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>57</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Marcus</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.94268045554563,40.80345956584207
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Randall's Island Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Island</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>18</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>72</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Randall's</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.92169947285805,40.79591467134582
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Ward's Island Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Island</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>19</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>91</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Wards</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.92997389407995,40.784284324777666
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Central Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>20</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>15</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Central</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.9656559857641,40.78288157650297
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Columbus Circle</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Circle</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>21</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>18</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Columbus</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.98190208354553,40.76806052553004
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Times Square</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Square</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>22</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>88</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Times</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.98179379395485,40.75802130316951
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Madison Square</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Square</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>23</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>56</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Madison</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.9880666276522,40.74218139635935
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Union Square</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Square</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>24</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>89</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Union</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.99038010031393,40.73595972106511
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Governors Island</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Island</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>25</value></Data><Data name="angle"><value>41</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>39</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Governors</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.01838919066344,40.68941550618436
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>McCarren Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>26</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>59</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>McCarren</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.95198134413582,40.72089970411925
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Astoria Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>27</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>3</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Astoria</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.92426900777012,40.776792340470784
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Botanic Garden</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Garden</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>28</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>7</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Botanic</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.96612485508889,40.66993701228011
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Prospect Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>29</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>71</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Prospect</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.96908663893517,40.6612508155903
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Greenwood Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>30</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>41</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Greenwood</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.99044121963072,40.65204690915801
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Holy Cross Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>31</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>44</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Holy Cross</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.9376482616997,40.64686106018592
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Bush Terminal</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Terminal</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>32</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>11</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Bush</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.01857569600294,40.6550850778905
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Owls Head Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Head</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>33</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>68</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Owls</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.0323085182286,40.639958950876455
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Fort Hamilton</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Hamilton</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>34</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>32</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Fort</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.02879132751748,40.60738115117111
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Dyker Beach Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Beach</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>35</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>25</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Dyker</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.0195610269429,40.6114640343956
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Washington Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>36</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>92</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Washington</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.97543203962991,40.62022206700046
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Marine Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>37</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>58</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Marine</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.92408612898762,40.6033622478687
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Floyd Bennett Field</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Bennett</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Field</value></Data><Data name="objectid"><value>38</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>28</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Floyd</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.89009560708669,40.591299483321535
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Canarsie Beach Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Beach</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>39</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>14</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Canarsie</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.89810825126949,40.62548603514694
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Aqueduct Race Track</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Race</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Track</value></Data><Data name="objectid"><value>40</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>2</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Aqueduct</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.83062351650361,40.6721943279148
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Bayside Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>41</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>5</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Bayside</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.85499266330103,40.67728705563947
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Brookville Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>42</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>10</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Brookville</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.75238277093409,40.651908212675536
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Baisley Pond Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Pond</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>43</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>4</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Baisley</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.78691600919068,40.67324965288325
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Roy Wilkins Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Wilkins</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>44</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>76</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Roy</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.77202424502954,40.68791058817667
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Forest Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value></value></Data><Data name="stacked"><value>1</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>45</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>30</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Park</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.8458479885105,40.703595598692104
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Cypress Hills Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>46</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>23</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Cypress Hills</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87614171586935,40.6958415315425
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Saint  Johns Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>47</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>77</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>St. John's</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.86698585276544,40.715164169632864
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Linden Hill Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Hill</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Cemetery</value></Data><Data name="objectid"><value>48</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>54</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Linden</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.91396903877961,40.710489911870745
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Mount Olivet Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>49</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>65</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Mt. Olivet</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.89594770816673,40.720840966001944
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Juniper Valley Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>50</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>49</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Juniper Valley</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87963218810509,40.72035302706922
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Lutheran Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>51</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>55</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Lutheran</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.88748458327001,40.7122362531459
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Montefiore Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>52</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>61</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Montefiore</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.74173159724515,40.68584033375772
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Flushing Meadows Corona Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Meadows</value></Data><Data name="stacked"><value>4</value></Data><Data name="annoline3"><value>Corona</value></Data><Data name="objectid"><value>53</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>29</value></Data><Data name="annoline4"><value>Park</value></Data><Data name="annoline1"><value>Flushing</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.84141524806722,40.73799908156732
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Mount Hebron Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Hebron</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Cemetery</value></Data><Data name="objectid"><value>54</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>63</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Mt.</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.83033792899847,40.73409273122971
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Kissena Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value></value></Data><Data name="stacked"><value>1</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>55</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>50</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Kissena Park</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.80410217310029,40.744580081208476
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Cunningham Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>56</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>22</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Cunningham</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.76903038011216,40.72903318311167
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Fort Totten</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Totten</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>57</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>35</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Fort</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.77703960313673,40.79253915786017
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Clearview Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>View</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>58</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>16</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Clear-</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.78886382836278,40.782589659950936
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Crocheron Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>59</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>20</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Crocheron</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.76899845415153,40.77133494883229
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Alley Pond Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Pond</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>60</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>1</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Alley</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.74427173442596,40.75365741448745
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Douglaston Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>61</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>24</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Douglaston</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.73228698411853,40.75164377669763
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Fort Schuyler</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Schuyler</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>62</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>33</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Fort</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.79311970418817,40.8056466984195
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Calvary Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>63</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>12</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Calvary</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.93013732431596,40.733382383304445
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>New Calvary Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Calvary</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Cemetery</value></Data><Data name="objectid"><value>64</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>67</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>New</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.9131473948865,40.73707174406401
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Mount Zion Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>65</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>66</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Mt. Zion</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.90791234235725,40.73205823678442
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Jacob Riis Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>66</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>46</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Jacob Riis</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87158393152964,40.567881758894366
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Fort Tilden</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Tilden</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>67</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>34</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Fort</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.89490042748818,40.561630259829755
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Liberty Island</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Island</value></Data><Data name="stacked"><value>0</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>68</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>53</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Liberty</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.04528226698027,40.69000020889039
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Ellis Island</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Island</value></Data><Data name="stacked"><value>0</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>69</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Manhattan</value></Data><Data name="id"><value>26</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Ellis</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.04017358617266,40.699194768175424
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Snug Harbor</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Harbor</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>70</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>83</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Snug</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.10316988748055,40.64230186651149
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Silver Lake Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Lake</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>71</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>82</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Silver</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.09460330126251,40.62728628119562
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Clove Lakes Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Lakes</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>72</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>17</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Clove</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.11069895248923,40.61811022297896
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Fort Wadsworth</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Wadsworth</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>73</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>37</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Fort</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.05881836960978,40.60438473086624
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Miller Field</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Field</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>74</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>60</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Miller</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.09882949835136,40.56802527531299
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Great Kills Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Kills</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>75</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>40</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Great</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.12560543839727,40.54844478732872
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Moravian Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>76</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>62</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Moravian</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.1173575915285,40.5827147298193
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>LaTourette Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>77</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>52</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>LaTourette</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.14250377155005,40.58215534212022
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Willowbrook Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>78</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>93</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Willowbrook</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.15824652767382,40.60061998735724
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Blue Heron Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Heron</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>79</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>6</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Blue</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.17535438004438,40.5312531726696
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Wolfe's Pond Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Pond</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>80</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>94</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Wolfe's</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.19242924910763,40.52173962752439
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Mount Loretto</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Loretto</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>81</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>64</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Mt.</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.21806393427,40.509664690342944
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Conference House Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>House</value></Data><Data name="stacked"><value>3</value></Data><Data name="annoline3"><value>Park</value></Data><Data name="objectid"><value>82</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>19</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Conference</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.24856463534958,40.49956588939516
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>South Shore Golf Course</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Shore</value></Data><Data name="stacked"><value>4</value></Data><Data name="annoline3"><value>Golf</value></Data><Data name="objectid"><value>83</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>85</value></Data><Data name="annoline4"><value>Course</value></Data><Data name="annoline1"><value>South</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.20503665657094,40.55118349678608
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Fresh Kills</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Kills</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>84</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>38</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Fresh</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.19497650953257,40.57405693425491
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Plumb Beach</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Beach</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>85</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>70</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Plumb</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.91512177856971,40.58319523665636
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>John F. Kennedy International Airport</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>International Airport</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>86</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>48</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>John F. Kennedy</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.78599900918941,40.648067559263275
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>LaGuardia Airport</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value></value></Data><Data name="stacked"><value>1</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>87</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>51</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>LaGuardia Airport</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.87428090918077,40.77541560299302
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Jamaica Bay Wildlife Refuge</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Wildlife Refuge</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>88</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>47</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Jamaica Bay</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.82628899155016,40.622877455110455
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Calvert Vaux</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>89</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>13</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Calvert Vaux</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.9936953325996,40.58507538957254
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>High Rock Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>90</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Staten Island</value></Data><Data name="id"><value>43</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>High Rock</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.1149203740042,40.59043473002143
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Red Hook Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>100</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>73</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Red Hook</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -74.00555273394113,40.67204727399426
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Saint Michael's Cemetery</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Cemetery</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>102</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>80</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>St. Michael's</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.89847195245063,40.76444875872217
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Riverdale Park</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>1</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>103</value></Data><Data name="angle"><value>75</value></Data><Data name="borough"><value>Bronx</value></Data><Data name="id"><value>75</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Riverdale Park</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.91682910729087,40.89230556742364
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Forest Park (Golf Course)</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value></value></Data><Data name="stacked"><value>1</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>105</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>31</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Forest</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.86271386920103,40.69944758256273
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Spring Creek Park Preserve (No Access)</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>108</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Brooklyn</value></Data><Data name="id"><value>87</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Spring Creek</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.86501941871359,40.64582806586263
+    </coordinates></Point>
+    </Placemark><Placemark>
+      <styleUrl>#defaultStyle</styleUrl>
+      <name>Spring Creek Park Gateway National Recreation Area</name>
+      <ExtendedData>
+        <Data name="annoline2a"><value>Park</value></Data><Data name="stacked"><value>2</value></Data><Data name="annoline3"><value></value></Data><Data name="objectid"><value>109</value></Data><Data name="angle"><value>0</value></Data><Data name="borough"><value>Queens</value></Data><Data name="id"><value>86</value></Data><Data name="annoline4"><value></value></Data><Data name="annoline1"><value>Spring Creek</value></Data>
+      </ExtendedData>
+      <Point><coordinates>
+      -73.84421119173001,40.64631600114786
+    </coordinates></Point>
+    </Placemark></Folder>  </Document>
+  </kml>
