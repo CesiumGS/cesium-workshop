@@ -41,7 +41,7 @@ What's here?
 
 * [index.html](index.html) - A simple HTML page. Run a local web server, and browse to index.html to run your app, which will show our sample application.
 * [Source](Source/) - Contains [App.js](Source/App.js) which is referenced from index.html.  This is where the app's code goes.
-* [ThirdParty](ThirdParty/) - A directory for third-party libraries, which here includes just Cesium.  See the **Updating Cesium** section for how to use the latest version from the Cesium repo.
+* [ThirdParty](ThirdParty/) - A directory for third-party libraries, which here includes just Cesium.
 * [server.js](server.js) - A simple node.js server for serving your Cesium app.  See the **Local server** section.
 * [package.json](package.json) - Dependencies for the node.js server.
 * [LICENSE](LICENSE) - A license file already referencing Cesium as a third-party.  This starter app is licensed with [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) (free for commercial and non-commercial use).  You can, of course, license your code however you want.
