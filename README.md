@@ -6,7 +6,7 @@
     </a>
 </p>
 
-A simple JavaScript app showcasing some features of [Cesium](http://cesiumjs.org/), the open-source WebGL virtual globe and map engine.
+A simple JavaScript app showcasing some features of [Cesium](http://cesiumjs.org/), the open-source WebGL virtual globe and map engine. Learn more about this code by reaing our [associated tutorial](https://cesiumjs.org/tutorials/Cesium-Workshop/).
 
 **Cesium version**: [1.36](http://cesiumjs.org/downloads.html).
 
