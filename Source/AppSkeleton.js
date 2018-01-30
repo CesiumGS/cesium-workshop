@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    Cesium.BingMapsApi.defaultKey = 'AihaXS6TtE_olKOVdtkMenAMq1L5nDlnU69mRtNisz1vZavr1HhdqGRNkB2Bcqvs'; // For use with this application only
+    Cesium.BingMapsApi.defaultKey = 'Ar9n20kTp-N8tEg3Dpx-Pgocmx3W0-GUnD_Bgt3h8g6pSeDL8yxByTVGHyMyjI2p'; // Generate a new Bing Key for your app at https://msdn.microsoft.com/en-us/library/ff428642.aspx
 
     //////////////////////////////////////////////////////////////////////////
     // Creating the Viewer
