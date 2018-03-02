@@ -1,8 +1,6 @@
 (function () {
     "use strict";
 
-    Cesium.BingMapsApi.defaultKey = 'Ar9n20kTp-N8tEg3Dpx-Pgocmx3W0-GUnD_Bgt3h8g6pSeDL8yxByTVGHyMyjI2p'; // Generate a new Bing Key for your app at https://msdn.microsoft.com/en-us/library/ff428642.aspx
-
     //////////////////////////////////////////////////////////////////////////
     // Creating the Viewer
     //////////////////////////////////////////////////////////////////////////
@@ -20,10 +18,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Add Bing imagery
-    // viewer.imageryLayers.addImageryProvider(new Cesium.BingMapsImageryProvider({
-    //     url : 'https://dev.virtualearth.net',
-    //     mapStyle: Cesium.BingMapsStyle.AERIAL // Can also use Cesium.BingMapsStyle.ROAD
-    // }));
+    // viewer.imageryLayers.addImageryProvider(new Cesium.IonImageryProvider({ assetId: 3954 }));
 
     //////////////////////////////////////////////////////////////////////////
     // Loading Terrain
@@ -202,10 +197,8 @@
     //////////////////////////////////////////////////////////////////////////
 
     // // Load the NYC buildings tileset
-    // var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-    //     url: 'https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s',
-    //     maximumScreenSpaceError: 16 // default value
-    // }));
+    // var tileset = new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(3839) });
+    // var city = viewer.scene.primitives.add(tileset);
     //
     // // Adjust the tileset height so it's not floating above terrain
     // var heightOffset = -32;

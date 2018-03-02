@@ -18,10 +18,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Add Bing imagery
-    viewer.imageryLayers.addImageryProvider(new Cesium.BingMapsImageryProvider({
-        url : 'https://dev.virtualearth.net',
-        mapStyle: Cesium.BingMapsStyle.AERIAL // Can also use Cesium.BingMapsStyle.ROAD
-    }));
+    viewer.imageryLayers.addImageryProvider(new Cesium.IonImageryProvider({ assetId: 3954 }));
 
     //////////////////////////////////////////////////////////////////////////
     // Loading Terrain
