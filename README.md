@@ -8,7 +8,7 @@
 
 A simple JavaScript app showcasing some features of [Cesium](http://cesiumjs.org/), the open-source WebGL virtual globe and map engine. Learn more about this code by reading our [associated tutorial](https://cesiumjs.org/tutorials/Cesium-Workshop/).
 
-**Cesium version**: [1.36](http://cesiumjs.org/downloads.html).
+**Cesium version**: [1.43](http://cesiumjs.org/downloads.html).
 
 **License**: Apache 2.0.  Free for commercial and non-commercial use.  See [LICENSE.md](LICENSE.md).
 
