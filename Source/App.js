@@ -28,10 +28,9 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Load STK World Terrain
-    viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url : 'https://assets.agi.com/stk-terrain/world',
+    viewer.terrainProvider =  Cesium.createWorldTerrain({
         requestWaterMask : true, // required for water effects
-        requestVertexNormals : false // required for terrain lighting
+        requestVertexNormals : true // required for terrain lighting
     });
     // Enable depth testing so things behind the terrain disappear.
     viewer.scene.globe.depthTestAgainstTerrain = true;
@@ -151,6 +150,7 @@
                     minimumBlue : 0.5,
                     alpha : 0.6
                 });
+                entity.polygon.classificationType = Cesium.ClassificationType.TERRAIN;
                 // Generate Polygon center
                 var polyPositions = entity.polygon.hierarchy.getValue(Cesium.JulianDate.now()).positions;
                 var polyCenter = Cesium.BoundingSphere.fromPoints(polyPositions).center;
@@ -200,10 +200,8 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Load the NYC buildings tileset
-    var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-        url: 'https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s',
-        maximumScreenSpaceError: 16 // default value
-    }));
+    var tileset = new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(3839) });
+    var city = viewer.scene.primitives.add(tileset);
 
     // Adjust the tileset height so it's not floating above terrain
     var heightOffset = -32;
@@ -328,8 +326,6 @@
 
     neighborhoodsElement.addEventListener('change', function (e) {
         neighborhoods.show = e.target.checked;
-        tileStyle.value = 'transparent';
-        city.style = transparentStyle;
     });
 
     // Finally, wait for the initial city to be ready before removing the loading indicator.
