@@ -1,8 +1,6 @@
 (function () {
     "use strict";
 
-    Cesium.BingMapsApi.defaultKey = 'Ar9n20kTp-N8tEg3Dpx-Pgocmx3W0-GUnD_Bgt3h8g6pSeDL8yxByTVGHyMyjI2p'; // Generate a new Bing Key for your app at https://msdn.microsoft.com/en-us/library/ff428642.aspx
-
     //////////////////////////////////////////////////////////////////////////
     // Creating the Viewer
     //////////////////////////////////////////////////////////////////////////
@@ -17,21 +15,20 @@
     // Loading Imagery
     //////////////////////////////////////////////////////////////////////////
 
-    // Add Bing imagery
-    viewer.imageryLayers.addImageryProvider(new Cesium.BingMapsImageryProvider({
-        url : 'https://dev.virtualearth.net',
-        mapStyle: Cesium.BingMapsStyle.AERIAL // Can also use Cesium.BingMapsStyle.ROAD
-    }));
+    // Remove default base layer
+    viewer.imageryLayers.remove(0);
+
+    // Add Sentinel-2 imagery
+    viewer.imageryLayers.addImageryProvider(new Cesium.IonImageryProvider({ assetId: 3954 }));
 
     //////////////////////////////////////////////////////////////////////////
     // Loading Terrain
     //////////////////////////////////////////////////////////////////////////
 
-    // Load STK World Terrain
-    viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url : 'https://assets.agi.com/stk-terrain/world',
+    // Load Cesium World Terrain
+    viewer.terrainProvider =  Cesium.createWorldTerrain({
         requestWaterMask : true, // required for water effects
-        requestVertexNormals : false // required for terrain lighting
+        requestVertexNormals : true // required for terrain lighting
     });
     // Enable depth testing so things behind the terrain disappear.
     viewer.scene.globe.depthTestAgainstTerrain = true;
@@ -151,6 +148,8 @@
                     minimumBlue : 0.5,
                     alpha : 0.6
                 });
+                // Tells the polygon to color the terrain. ClassificationType.CESIUM_3D_TILE will color the 3D tileset, and ClassificationType.BOTH will color both the 3d tiles and terrain (BOTH is the default)
+                entity.polygon.classificationType = Cesium.ClassificationType.TERRAIN;
                 // Generate Polygon center
                 var polyPositions = entity.polygon.hierarchy.getValue(Cesium.JulianDate.now()).positions;
                 var polyCenter = Cesium.BoundingSphere.fromPoints(polyPositions).center;
@@ -200,10 +199,8 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Load the NYC buildings tileset
-    var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-        url: 'https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s',
-        maximumScreenSpaceError: 16 // default value
-    }));
+    var tileset = new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(3839) });
+    var city = viewer.scene.primitives.add(tileset);
 
     // Adjust the tileset height so it's not floating above terrain
     var heightOffset = -32;
@@ -328,8 +325,6 @@
 
     neighborhoodsElement.addEventListener('change', function (e) {
         neighborhoods.show = e.target.checked;
-        tileStyle.value = 'transparent';
-        city.style = transparentStyle;
     });
 
     // Finally, wait for the initial city to be ready before removing the loading indicator.
