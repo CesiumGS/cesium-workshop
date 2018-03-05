@@ -201,8 +201,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // // Load the NYC buildings tileset
-    // var tileset = new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(3839) });
-    // var city = viewer.scene.primitives.add(tileset);
+    // var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(3839) }));
     //
     // // Adjust the tileset height so it's not floating above terrain
     // var heightOffset = -32;
