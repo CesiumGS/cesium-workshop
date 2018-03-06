@@ -178,7 +178,8 @@
     // var drone;
     // dronePromise.then(function(dataSource) {
     //     viewer.dataSources.add(dataSource);
-    //     drone = dataSource.entities.values[0];
+    //     // Get the entity using the id defined in the CZML data
+    //     drone = dataSource.entities.getById('Aircraft/Aircraft1');
     //     // Attach a 3D model
     //     drone.model = {
     //         uri : './Source/SampleData/Models/CesiumDrone.gltf',
