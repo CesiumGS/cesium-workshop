@@ -21,7 +21,7 @@ A local HTTP server is required to run the app.
 
 Have python installed?  If so, from the `cesium-workshop` root directory run
 ```
-python -m SimpleHTTPServer
+python -m SimpleHTTPServer 8080
 ```
 (Starting with Python 3, use `python -m http.server 8080`).
 
