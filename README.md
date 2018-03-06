@@ -8,7 +8,7 @@
 
 A simple JavaScript app showcasing some features of [Cesium](http://cesiumjs.org/), the open-source WebGL virtual globe and map engine. Learn more about this code by reading our [associated tutorial](https://cesiumjs.org/tutorials/Cesium-Workshop/).
 
-**Cesium version**: [1.36](http://cesiumjs.org/downloads.html).
+**Cesium version**: [1.43](http://cesiumjs.org/downloads.html).
 
 **License**: Apache 2.0.  Free for commercial and non-commercial use.  See [LICENSE.md](LICENSE.md).
 
@@ -44,7 +44,7 @@ What's here?
 * [ThirdParty](ThirdParty/) - A directory for third-party libraries, which here includes just Cesium.
 * [server.js](server.js) - A simple node.js server for serving your Cesium app.  See the **Local server** section.
 * [package.json](package.json) - Dependencies for the node.js server.
-* [LICENSE](LICENSE) - A license file already referencing Cesium as a third-party.  This starter app is licensed with [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) (free for commercial and non-commercial use).  You can, of course, license your code however you want.
+* [LICENSE](LICENSE.md) - A license file already referencing Cesium as a third-party.  This starter app is licensed with [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) (free for commercial and non-commercial use).  You can, of course, license your code however you want.
 * [.gitignore](.gitignore) - A small list of files not to include in the git repo.  Add to this as needed.
 
 Cesium resources
