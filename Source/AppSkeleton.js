@@ -17,11 +17,11 @@
     // Loading Imagery
     //////////////////////////////////////////////////////////////////////////
 
-    // Remove default base layer
-    viewer.imageryLayers.remove(0);
-
-    // Add Sentinel-2 imagery
-    viewer.imageryLayers.addImageryProvider(new Cesium.IonImageryProvider({ assetId: 3954 }));
+    // // Remove default base layer
+    // viewer.imageryLayers.remove(0);
+    //
+    // // Add Sentinel-2 imagery
+    // viewer.imageryLayers.addImageryProvider(new Cesium.IonImageryProvider({ assetId: 3954 }));
 
     //////////////////////////////////////////////////////////////////////////
     // Loading Terrain
