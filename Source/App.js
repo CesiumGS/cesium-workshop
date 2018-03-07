@@ -16,7 +16,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Remove default base layer
-    viewer.imageryLayers.remove(0);
+    viewer.imageryLayers.remove(viewer.imageryLayers.get(0));
 
     // Add Sentinel-2 imagery
     viewer.imageryLayers.addImageryProvider(new Cesium.IonImageryProvider({ assetId: 3954 }));
@@ -163,7 +163,7 @@
                     horizontalOrigin : Cesium.HorizontalOrigin.CENTER,
                     verticalOrigin : Cesium.VerticalOrigin.BOTTOM,
                     distanceDisplayCondition : new Cesium.DistanceDisplayCondition(10.0, 8000.0),
-                    disableDepthTestDistance : Number.POSITIVE_INFINITY
+                    disableDepthTestDistance : 100.0
                 };
             }
         }
@@ -233,7 +233,7 @@
         show : true
     });
 
-   // Define a style in which buildings are colored by height
+    // Define a style in which buildings are colored by height
     var heightStyle = new Cesium.Cesium3DTileStyle({
         color : {
             conditions : [
@@ -306,10 +306,10 @@
     droneModeElement.addEventListener('change', setViewMode);
 
     viewer.trackedEntityChanged.addEventListener(function() {
-       if (viewer.trackedEntity === drone) {
-           freeModeElement.checked = false;
-           droneModeElement.checked = true;
-       }
+        if (viewer.trackedEntity === drone) {
+            freeModeElement.checked = false;
+            droneModeElement.checked = true;
+        }
     });
 
     //////////////////////////////////////////////////////////////////////////
