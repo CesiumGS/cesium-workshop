@@ -28,8 +28,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Load Cesium World Terrain
-    viewer.terrainProvider = viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(1),
+    viewer.terrainProvider = new Cesium.createWorldTerrain({
         requestWaterMask : true, // required for water effects
         requestVertexNormals : true // required for terrain lighting
     });
@@ -113,10 +112,10 @@
                 var latitude = Cesium.Math.toDegrees(cartographicPosition.latitude);
                 var longitude = Cesium.Math.toDegrees(cartographicPosition.longitude);
                 // Modify description
-                description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>';
-                description += '<tr><th>' + "Latitude" + '</th><td>' + latitude.toFixed(5) + '</td></tr>';
-                description += '<tr><th>' + "Longitude" + '</th><td>' + longitude.toFixed(5) + '</td></tr>';
-                description += '</tbody></table>';
+                var description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>' +
+                    '<tr><th>' + "Longitude" + '</th><td>' + longitude.toFixed(5) + '</td></tr>' +
+                    '<tr><th>' + "Latitude" + '</th><td>' + latitude.toFixed(5) + '</td></tr>' +
+                    '</tbody></table>';
                 entity.description = description;
             }
         }
