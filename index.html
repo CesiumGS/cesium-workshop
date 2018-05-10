@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Use correct character set. -->
-    <meta charset="utf-8">
-    <!-- Tell IE to use the latest, best version. -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>New York City</title>
-    <!-- The Cesium library. -->
-    <script src="ThirdParty/Cesium/Cesium.js"></script>
-    <style>@import url(ThirdParty/Cesium/Widgets/widgets.css);</style>
-    <link rel="stylesheet" href="index.css" media="screen">
-</head>
-<body>
-<!-- A container for the Cesium Viewer to live in. -->
-<div id="cesiumContainer"></div>
+    <head>
+        <!-- Use correct character set. -->
+        <meta charset="utf-8">
+        <!-- Tell IE to use the latest, best version. -->
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <!-- Make the app on mobile take up the full browser screen and disable user scaling. -->
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        <title>New York City</title>
+        <!-- The Cesium library. -->
+        <script src="ThirdParty/Cesium/Cesium.js"></script>
+        <!-- Style our app. -->
+        <link rel="stylesheet" href="index.css" media="screen">
+    </head>
+    <body>
+        <!-- A container for the Cesium Viewer to live in. -->
+        <div id="cesiumContainer"></div>
 
-<!-- Some input elements for our application. -->
-<div class="backdrop" id="menu">
-    <h2>Sample NYC Geocaches</h2>
-    <span><strong>Camera Mode</strong></span>
-    <div class="nowrap">
-        <input id="freeMode" name="source" type="radio" checked/>
-        <label for="freeMode">Free</label>
-    </div>
-    <div class="nowrap">
-        <input id="droneMode" name="source" type="radio"/>
-        <label for="droneMode">Drone View</label>
-    </div>
-    <br>
-    <span><strong>3d Tile Styling</strong></span>
-    <div class="nowrap">
-        <select id="tileStyle">
-            <option value="none">None</option>
-            <option value="height">Height</option>
-            <option value="transparent">Transparent</option>
-        </select>
-    </div>
-    <br>
-    <span><strong>Display Options</strong></span>
-    <div class="nowrap">
-        <input id="shadows" type="checkbox"/>
-        <label for="shadows">Shadows</label>
-    </div>
+        <!-- Some input elements for our app. -->
+        <div class="backdrop" id="menu">
+            <h2>Sample NYC Geocaches</h2>
+            <span><strong>Camera Mode</strong></span>
+            <div class="nowrap">
+                <input id="freeMode" name="source" type="radio" checked/>
+                <label for="freeMode">Free</label>
+            </div>
+            <div class="nowrap">
+                <input id="droneMode" name="source" type="radio"/>
+                <label for="droneMode">Drone View</label>
+            </div>
+            <br>
+            <span><strong>3d Tile Styling</strong></span>
+            <div class="nowrap">
+                <select id="tileStyle">
+                    <option value="none">None</option>
+                    <option value="height">Height</option>
+                    <option value="transparent">Transparent</option>
+                </select>
+            </div>
+            <br>
+            <span><strong>Display Options</strong></span>
+            <div class="nowrap">
+                <input id="shadows" type="checkbox"/>
+                <label for="shadows">Shadows</label>
+            </div>
 
-    <div class="nowrap">
-        <input id="neighborhoods" type="checkbox" checked/>
-        <label for="neighborhoods">Neighborhoods</label>
-    </div>
-    <br>
-</div>
-<div id="loadingIndicator" class="cover">
-    <div id="loadingIcon" class="loadingIndicator"></div>
-</div>
+            <div class="nowrap">
+                <input id="neighborhoods" type="checkbox" checked/>
+                <label for="neighborhoods">Neighborhoods</label>
+            </div>
+            <br>
+        </div>
+        <div id="loadingIndicator" class="cover">
+            <div id="loadingIcon" class="loadingIndicator"></div>
+        </div>
 
-<!-- Our application code. -->
-<script src="Source/App.js"></script>
+        <!-- Our app code. -->
+        <script src="Source/App.js"></script>
 
-</body>
+    </body>
 </html>
