@@ -1,6 +1,9 @@
 (function () {
     "use strict";
 
+    // TODO: Add your ion access token from cesium.com/ion/
+    // Cesium.Ion.defaultAccessToken = '<YOUR ACCESS TOKEN HERE>';
+
     //////////////////////////////////////////////////////////////////////////
     // Creating the Viewer
     //////////////////////////////////////////////////////////////////////////
@@ -26,7 +29,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Load Cesium World Terrain
-    viewer.terrainProvider =  Cesium.createWorldTerrain({
+    viewer.terrainProvider = Cesium.createWorldTerrain({
         requestWaterMask : true, // required for water effects
         requestVertexNormals : true // required for terrain lighting
     });
@@ -110,10 +113,10 @@
                 var latitude = Cesium.Math.toDegrees(cartographicPosition.latitude);
                 var longitude = Cesium.Math.toDegrees(cartographicPosition.longitude);
                 // Modify description
-                var description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>';
-                description += '<tr><th>' + "Latitude" + '</th><td>' + latitude + '</td></tr>';
-                description += '<tr><th>' + "Longitude" + '</th><td>' + longitude + '</td></tr>';
-                description += '</tbody></table>';
+                var description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>' +
+                    '<tr><th>' + "Longitude" + '</th><td>' + longitude.toFixed(5) + '</td></tr>' +
+                    '<tr><th>' + "Latitude" + '</th><td>' + latitude.toFixed(5) + '</td></tr>' +
+                    '</tbody></table>';
                 entity.description = description;
             }
         }
@@ -182,7 +185,9 @@
         drone.model = {
             uri : './Source/SampleData/Models/CesiumDrone.gltf',
             minimumPixelSize : 128,
-            maximumScale : 2000
+            maximumScale : 1000,
+            silhouetteColor : Cesium.Color.WHITE,
+            silhouetteSize : 2
         };
         // Add computed orientation based on sampled positions
         drone.orientation = new Cesium.VelocityOrientationProperty(drone.position);

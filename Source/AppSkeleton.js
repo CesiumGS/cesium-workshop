@@ -1,12 +1,13 @@
 (function () {
     "use strict";
 
+    // TODO: Add your ion access token from cesium.com/ion/
+    // Cesium.Ion.defaultAccessToken = '<YOUR ACCESS TOKEN HERE>';
+
     //////////////////////////////////////////////////////////////////////////
     // Creating the Viewer
     //////////////////////////////////////////////////////////////////////////
 
-    // var viewer = new Cesium.Viewer('cesiumContainer');
-    //
     // var viewer = new Cesium.Viewer('cesiumContainer', {
     //     scene3DOnly: true,
     //     selectionIndicator: false,
@@ -19,7 +20,7 @@
 
     // // Remove default base layer
     // viewer.imageryLayers.remove(viewer.imageryLayers.get(0));
-    //
+
     // // Add Sentinel-2 imagery
     // viewer.imageryLayers.addImageryProvider(new Cesium.IonImageryProvider({ assetId: 3954 }));
 
@@ -28,7 +29,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // // Load Cesium World Terrain
-    // viewer.terrainProvider =  Cesium.createWorldTerrain({
+    // viewer.terrainProvider = Cesium.createWorldTerrain({
     //     requestWaterMask : true, // required for water effects
     //     requestVertexNormals : true // required for terrain lighting
     // });
@@ -41,7 +42,7 @@
 
     // // Enable lighting based on sun/moon positions
     // viewer.scene.globe.enableLighting = true;
-    //
+
     // // Create an initial camera view
     // var initialPosition = new Cesium.Cartesian3.fromDegrees(-73.998114468289017509, 40.674512895646692812, 2631.082799425431);
     // var initialOrientation = new Cesium.HeadingPitchRoll.fromDegrees(7.1077496389876024807, -31.987223091598949054, 0.025883251314954971306);
@@ -55,7 +56,7 @@
     // };
     // // Set the initial view
     // viewer.scene.camera.setView(homeCameraView);
-    //
+
     // // Add some camera flight animation options
     // homeCameraView.duration = 2.0;
     // homeCameraView.maximumHeight = 2000;
@@ -66,7 +67,7 @@
     //     e.cancel = true;
     //     viewer.scene.camera.flyTo(homeCameraView);
     // });
-    //
+
     // // Set up clock and timeline.
     // viewer.clock.shouldAnimate = true; // default
     // viewer.clock.startTime = Cesium.JulianDate.fromIso8601("2017-07-11T16:00:00Z");
@@ -89,15 +90,15 @@
     // // Load geocache points of interest from a KML file
     // // Data from : http://catalog.opendata.city/dataset/pediacities-nyc-neighborhoods/resource/91778048-3c58-449c-a3f9-365ed203e914
     // var geocachePromise = Cesium.KmlDataSource.load('./Source/SampleData/sampleGeocacheLocations.kml', kmlOptions);
-    //
+
     // // Add geocache billboard entities to scene and style them
     // geocachePromise.then(function(dataSource) {
     //     // Add the new data as entities to the viewer
     //     viewer.dataSources.add(dataSource);
-    //
+
     //     // Get the array of entities
     //     var geocacheEntities = dataSource.entities.values;
-    //
+
     //     for (var i = 0; i < geocacheEntities.length; i++) {
     //         var entity = geocacheEntities[i];
     //         if (Cesium.defined(entity.billboard)) {
@@ -112,34 +113,34 @@
     //             var latitude = Cesium.Math.toDegrees(cartographicPosition.latitude);
     //             var longitude = Cesium.Math.toDegrees(cartographicPosition.longitude);
     //             // Modify description
-    //             var description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>';
-    //             description += '<tr><th>' + "Latitude" + '</th><td>' + latitude + '</td></tr>';
-    //             description += '<tr><th>' + "Longitude" + '</th><td>' + longitude + '</td></tr>';
-    //             description += '</tbody></table>';
+    //             var description = '<table class="cesium-infoBox-defaultTable cesium-infoBox-defaultTable-lighter"><tbody>' +
+    //                 '<tr><th>' + "Longitude" + '</th><td>' + longitude.toFixed(5) + '</td></tr>' +
+    //                 '<tr><th>' + "Latitude" + '</th><td>' + latitude.toFixed(5) + '</td></tr>' +
+    //                 '</tbody></table>';
     //             entity.description = description;
     //         }
     //     }
     // });
-    //
+
     // var geojsonOptions = {
     //     clampToGround : true
     // };
     // // Load neighborhood boundaries from a GeoJson file
     // // Data from : https://data.cityofnewyork.us/City-Government/Neighborhood-Tabulation-Areas/cpf4-rkhq
     // var neighborhoodsPromise = Cesium.GeoJsonDataSource.load('./Source/SampleData/sampleNeighborhoods.geojson', geojsonOptions);
-    //
+
     // // Save an new entity collection of neighborhood data
     // var neighborhoods;
     // neighborhoodsPromise.then(function(dataSource) {
     //     // Add the new data as entities to the viewer
     //     viewer.dataSources.add(dataSource);
     //     neighborhoods = dataSource.entities;
-    //
+
     //     // Get the array of entities
     //     var neighborhoodEntities = dataSource.entities.values;
     //     for (var i = 0; i < neighborhoodEntities.length; i++) {
     //         var entity = neighborhoodEntities[i];
-    //
+
     //         if (Cesium.defined(entity.polygon)) {
     //             // Use kml neighborhood value as entity name
     //             entity.name = entity.properties.neighborhood;
@@ -170,10 +171,10 @@
     //         }
     //     }
     // });
-    //
+
     // // Load a drone flight path from a CZML file
     // var dronePromise = Cesium.CzmlDataSource.load('./Source/SampleData/SampleFlight.czml');
-    //
+
     // // Save a new drone model entity
     // var drone;
     // dronePromise.then(function(dataSource) {
@@ -184,11 +185,13 @@
     //     drone.model = {
     //         uri : './Source/SampleData/Models/CesiumDrone.gltf',
     //         minimumPixelSize : 128,
-    //         maximumScale : 2000
+    //         maximumScale : 1000,
+    //         silhouetteColor : Cesium.Color.WHITE,
+    //         silhouetteSize : 2
     //     };
     //     // Add computed orientation based on sampled positions
     //     drone.orientation = new Cesium.VelocityOrientationProperty(drone.position);
-    //
+
     //     // Smooth path interpolation
     //     drone.position.setInterpolationOptions({
     //         interpolationAlgorithm : Cesium.HermitePolynomialApproximation,
@@ -203,7 +206,7 @@
 
     // // Load the NYC buildings tileset
     // var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(3839) }));
-    //
+
     // // Adjust the tileset height so it's not floating above terrain
     // var heightOffset = -32;
     // city.readyPromise.then(function(tileset) {
@@ -225,16 +228,16 @@
     //     color : "color('white')",
     //     show : true
     // });
-    //
+
     // // Set the tileset style to default
     // city.style = defaultStyle;
-    //
+
     // // Define a white, transparent building style
     // var transparentStyle = new Cesium.Cesium3DTileStyle({
     //     color : "color('white', 0.3)",
     //     show : true
     // });
-    //
+
     // // Define a style in which buildings are colored by height
     // var heightStyle = new Cesium.Cesium3DTileStyle({
     //     color : {
@@ -250,7 +253,7 @@
     //         ]
     //     }
     // });
-    //
+
     // var tileStyle = document.getElementById('tileStyle');
     // function set3DTileStyle() {
     //     var selectedStyle = tileStyle.options[tileStyle.selectedIndex].value;
@@ -293,7 +296,7 @@
 
     // var freeModeElement = document.getElementById('freeMode');
     // var droneModeElement = document.getElementById('droneMode');
-    //
+
     // // Create a follow camera by tracking the drone entity
     // function setViewMode() {
     //     if (droneModeElement.checked) {
@@ -303,10 +306,10 @@
     //         viewer.scene.camera.flyTo(homeCameraView);
     //     }
     // }
-    //
+
     // freeModeElement.addEventListener('change', setViewMode);
     // droneModeElement.addEventListener('change', setViewMode);
-    //
+
     // viewer.trackedEntityChanged.addEventListener(function() {
     //     if (viewer.trackedEntity === drone) {
     //         freeModeElement.checked = false;
@@ -320,15 +323,15 @@
 
     // var shadowsElement = document.getElementById('shadows');
     // var neighborhoodsElement =  document.getElementById('neighborhoods');
-    //
+
     // shadowsElement.addEventListener('change', function (e) {
     //     viewer.shadows = e.target.checked;
     // });
-    //
+
     // neighborhoodsElement.addEventListener('change', function (e) {
     //     neighborhoods.show = e.target.checked;
     // });
-    //
+
     // // Finally, wait for the initial city to be ready before removing the loading indicator.
     // var loadingIndicator = document.getElementById('loadingIndicator');
     // loadingIndicator.style.display = 'block';
@@ -337,4 +340,3 @@
     // });
 
 }());
-
