@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    // TODO: Add your ion asset ID
+    // TODO: Add your ion access token
 
     //////////////////////////////////////////////////////////////////////////
     // Creating the Viewer
