@@ -23,10 +23,20 @@ To use the packaged server:
 
 * Install [node.js](http://nodejs.org/)
 * From the `cesium-workshop` root directory, run
-* `npm install`
-* `npm start`
+```
+npm install
+npm start
+```
 
 Browse to `http://localhost:8080/`
+
+>Have python installed?  If so, from the `cesium-workshop` root directory run
+>```
+>python -m SimpleHTTPServer 8080
+>```
+>(Starting with Python 3, use `python -m http.server 8080`).
+>
+>Browse to `http://localhost:8080/`
 
 What's here?
 ------------
