@@ -1,7 +1,8 @@
 (function () {
     "use strict";
 
-    // TODO: Add your ion access token
+    // TODO: Add your ion access token from cesium.com/ion/
+    // Cesium.Ion.defaultAccessToken = '<YOUR ACCESS TOKEN HERE>';
 
     //////////////////////////////////////////////////////////////////////////
     // Creating the Viewer
@@ -28,7 +29,7 @@
     //////////////////////////////////////////////////////////////////////////
 
     // // Load Cesium World Terrain
-    // viewer.terrainProvider = new Cesium.createWorldTerrain({
+    // viewer.terrainProvider = Cesium.createWorldTerrain({
     //     requestWaterMask : true, // required for water effects
     //     requestVertexNormals : true // required for terrain lighting
     // });
