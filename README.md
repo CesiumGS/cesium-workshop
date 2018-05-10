@@ -8,7 +8,7 @@
 
 A simple JavaScript app showcasing some features of [Cesium](http://cesiumjs.org/), the open-source WebGL virtual globe and map engine. Learn more about this code by reading our [associated tutorial](https://cesiumjs.org/tutorials/Cesium-Workshop/).
 
-**Cesium version**: [1.43](http://cesiumjs.org/downloads.html).
+**Cesium version**: [1.45](https://cesiumjs.org/downloads/).
 
 **License**: Apache 2.0.  Free for commercial and non-commercial use.  See [LICENSE.md](LICENSE.md).
 
@@ -17,22 +17,14 @@ This application is intended to introduce the main features of Cesium in context
 Local server
 ------------
 
-A local HTTP server is required to run the app.
+This app comes with a simple server ([`server.js`](./server.js)), but can be served through any means.
 
-Have python installed?  If so, from the `cesium-workshop` root directory run
-```
-python -m SimpleHTTPServer 8080
-```
-(Starting with Python 3, use `python -m http.server 8080`).
-
-Browse to `http://localhost:8080/`
-
-No python?  Use Cesium's node.js server.
+To use the packaged server:
 
 * Install [node.js](http://nodejs.org/)
 * From the `cesium-workshop` root directory, run
 * `npm install`
-* `node server.js`
+* `npm start`
 
 Browse to `http://localhost:8080/`
 
