@@ -8,8 +8,6 @@
 
 A simple JavaScript app showcasing some features of [Cesium](http://cesiumjs.org/), the open-source WebGL virtual globe and map engine. Learn more about this code by reading our [associated tutorial](https://cesiumjs.org/tutorials/Cesium-Workshop/).
 
-**Cesium version**: [1.45](https://cesiumjs.org/downloads/).
-
 **License**: Apache 2.0.  Free for commercial and non-commercial use.  See [LICENSE.md](LICENSE.md).
 
 This application is intended to introduce the main features of Cesium in context, but it is by no means exhaustive. Feel free to fork and modify this example however you'd like.
@@ -43,7 +41,6 @@ What's here?
 
 * [index.html](index.html) - A simple HTML page. Run a local web server, and browse to index.html to run your app, which will show our sample application.
 * [Source](Source/) - Contains [App.js](Source/App.js) which is referenced from index.html.  This is where the app's code goes.
-* [ThirdParty](ThirdParty/) - A directory for third-party libraries, which here includes just Cesium.
 * [server.js](server.js) - A simple node.js server for serving your Cesium app.  See the **Local server** section.
 * [package.json](package.json) - Dependencies for the node.js server.
 * [LICENSE](LICENSE.md) - A license file already referencing Cesium as a third-party.  This starter app is licensed with [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) (free for commercial and non-commercial use).  You can, of course, license your code however you want.
@@ -54,5 +51,5 @@ Cesium resources
 
 * [Reference Documentation](http://cesiumjs.org/refdoc.html) : A complete guide to the Cesium API containing many code snippets.
 * [Sandcastle](http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html) : A live-coding environment with a large gallery of code examples.
-* [Tutorials](http://cesiumjs.org/tutorials.html) : Detailed introductions to areas of Cesium development.
-* [Cesium Forum](http://cesiumjs.org/forum.html) : A resource for asking and answering Cesium-related questions.
+* [Tutorials](https://cesium.com/docs/) : Detailed introductions to areas of Cesium development.
+* [Cesium Forum](https://groups.google.com/forum/?hl=en#!forum/cesium-dev) : A resource for asking and answering Cesium-related questions.
