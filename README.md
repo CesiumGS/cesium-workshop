@@ -6,7 +6,7 @@
     </a>
 </p>
 
-A simple JavaScript app showcasing some features of [Cesium](http://cesiumjs.org/), the open-source WebGL virtual globe and map engine. Learn more about this code by reading our [associated tutorial](https://cesiumjs.org/tutorials/Cesium-Workshop/).
+A simple JavaScript app showcasing some features of [Cesium](http://cesium.com/cesiumjs), the open-source WebGL virtual globe and map engine. Learn more about this code by reading our [associated tutorial](https://cesiumjs.org/tutorials/Cesium-Workshop/).
 
 **License**: Apache 2.0.  Free for commercial and non-commercial use.  See [LICENSE.md](LICENSE.md).
 
@@ -49,7 +49,7 @@ What's here?
 Cesium resources
 ----------------
 
-* [Reference Documentation](http://cesiumjs.org/refdoc.html) : A complete guide to the Cesium API containing many code snippets.
-* [Sandcastle](http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html) : A live-coding environment with a large gallery of code examples.
+* [Reference Documentation](https://cesium.com/docs/cesiumjs-ref-doc/) : A complete guide to the Cesium API containing many code snippets.
+* [Sandcastle](https://sandcastle.cesium.com/) : A live-coding environment with a large gallery of code examples.
 * [Tutorials](https://cesium.com/docs/) : Detailed introductions to areas of Cesium development.
 * [Cesium Forum](https://groups.google.com/forum/?hl=en#!forum/cesium-dev) : A resource for asking and answering Cesium-related questions.
