@@ -173,7 +173,7 @@
     });
 
     // Load a drone flight path from a CZML file
-    var dronePromise = Cesium.CzmlDataSource.load('./Source/SampleData/SampleFlight.czml');
+    var dronePromise = Cesium.CzmlDataSource.load('./Source/SampleData/sampleFlight.czml');
 
     // Save a new drone model entity
     var drone;
@@ -205,10 +205,10 @@
     //////////////////////////////////////////////////////////////////////////
 
     // Load the NYC buildings tileset
-    var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(3839) }));
+    var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(75343) }));
 
     // Adjust the tileset height so it's not floating above terrain
-    var heightOffset = -32;
+    var heightOffset = -0;
     city.readyPromise.then(function(tileset) {
         // Position tileset
         var boundingSphere = tileset.boundingSphere;
@@ -242,13 +242,13 @@
     var heightStyle = new Cesium.Cesium3DTileStyle({
         color : {
             conditions : [
-                ["${height} >= 300", "rgba(45, 0, 75, 0.5)"],
-                ["${height} >= 200", "rgb(102, 71, 151)"],
-                ["${height} >= 100", "rgb(170, 162, 204)"],
-                ["${height} >= 50", "rgb(224, 226, 238)"],
-                ["${height} >= 25", "rgb(252, 230, 200)"],
-                ["${height} >= 10", "rgb(248, 176, 87)"],
-                ["${height} >= 5", "rgb(198, 106, 11)"],
+                ["${Height} >= 300", "rgba(45, 0, 75, 0.5)"],
+                ["${Height} >= 200", "rgb(102, 71, 151)"],
+                ["${Height} >= 100", "rgb(170, 162, 204)"],
+                ["${Height} >= 50", "rgb(224, 226, 238)"],
+                ["${Height} >= 25", "rgb(252, 230, 200)"],
+                ["${Height} >= 10", "rgb(248, 176, 87)"],
+                ["${Height} >= 5", "rgb(198, 106, 11)"],
                 ["true", "rgb(127, 59, 8)"]
             ]
         }
