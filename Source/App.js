@@ -207,17 +207,6 @@
     // Load the NYC buildings tileset
     var city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(75343) }));
 
-    // Adjust the tileset height so it's not floating above terrain
-    var heightOffset = -0;
-    city.readyPromise.then(function(tileset) {
-        // Position tileset
-        var boundingSphere = tileset.boundingSphere;
-        var cartographic = Cesium.Cartographic.fromCartesian(boundingSphere.center);
-        var surfacePosition = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, 0.0);
-        var offsetPosition = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, heightOffset);
-        var translation = Cesium.Cartesian3.subtract(offsetPosition, surfacePosition, new Cesium.Cartesian3());
-        tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation);
-    });
 
     //////////////////////////////////////////////////////////////////////////
     // Style 3D Tileset
