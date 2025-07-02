@@ -1,10 +1,8 @@
-# cesium-workshop
+# [DEPRECATED] cesium-workshop
 
-<p align="center">
-    <a href="http://cesiumjs.org/">
-        <img src="https://github.com/AnalyticalGraphicsInc/cesium/wiki/logos/Cesium_Logo_Color.jpg" width="50%" />
-    </a>
-</p>
+> [!IMPORTANT]
+> **This project is deprecated!**
+> It is no longer supported or maintained. For an up-to-date workshop, [refer to the `CesiumGS/cesiumjs-workshop`](https://github.com/CesiumGS/cesiumjs-workshop).
 
 A simple JavaScript app showcasing some features of [Cesium](http://cesium.com/cesiumjs), the open-source WebGL virtual globe and map engine. Learn more about this code by reading our [associated tutorial](https://cesiumjs.org/tutorials/Cesium-Workshop/).
 
